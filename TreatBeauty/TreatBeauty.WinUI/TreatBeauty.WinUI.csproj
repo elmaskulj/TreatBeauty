@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E611C53A-8A88-47C5-98DF-45D981973453}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>TreatBeauty.WinUI</RootNamespace>
+    <AssemblyName>TreatBeauty.WinUI</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Flurl, Version=3.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Flurl.3.0.2\lib\net472\Flurl.dll</HintPath>
+    </Reference>
+    <Reference Include="Flurl.Http, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Flurl.Http.3.2.0\lib\net472\Flurl.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApiService.cs" />
+    <Compile Include="CurrentUser\CurrentUser.cs" />
+    <Compile Include="EmployeeForms\frmAddEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeForms\frmAddEmployee.Designer.cs">
+      <DependentUpon>frmAddEmployee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeForms\frmEmployeeHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeForms\frmEmployeeHome.Designer.cs">
+      <DependentUpon>frmEmployeeHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmParent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmParent.Designer.cs">
+      <DependentUpon>frmParent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="helper\FormMaker.cs" />
+    <Compile Include="helper\ImageHelper.cs" />
+    <Compile Include="helper\PasswordGenerator.cs" />
+    <Compile Include="helper\PictureBoxValidator.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SalonForms\frmAddSalon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalonForms\frmAddSalon.Designer.cs">
+      <DependentUpon>frmAddSalon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalonForms\frmSalonHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalonForms\frmSalonHome.Designer.cs">
+      <DependentUpon>frmSalonHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceForms\frmAddCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceForms\frmAddCategory.Designer.cs">
+      <DependentUpon>frmAddCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceForms\frmAddService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceForms\frmAddService.Designer.cs">
+      <DependentUpon>frmAddService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceForms\frmServiceHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ServiceForms\frmServiceHome.Designer.cs">
+      <DependentUpon>frmServiceHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceForms\ServiceListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ServiceForms\ServiceListItem.Designer.cs">
+      <DependentUpon>ServiceListItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Validator.cs" />
+    <EmbeddedResource Include="EmployeeForms\frmAddEmployee.resx">
+      <DependentUpon>frmAddEmployee.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeForms\frmEmployeeHome.resx">
+      <DependentUpon>frmEmployeeHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmParent.resx">
+      <DependentUpon>frmParent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalonForms\frmAddSalon.resx">
+      <DependentUpon>frmAddSalon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalonForms\frmSalonHome.resx">
+      <DependentUpon>frmSalonHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceForms\frmAddCategory.resx">
+      <DependentUpon>frmAddCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceForms\frmAddService.resx">
+      <DependentUpon>frmAddService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceForms\frmServiceHome.resx">
+      <DependentUpon>frmServiceHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ServiceForms\ServiceListItem.resx">
+      <DependentUpon>ServiceListItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TreatBeauty.Model\TreatBeauty.Model.csproj">
+      <Project>{d0bed807-6e0e-47fb-b9fe-80d7b8ce7cf2}</Project>
+      <Name>TreatBeauty.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
