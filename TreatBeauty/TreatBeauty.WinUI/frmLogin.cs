@@ -10,40 +10,43 @@ namespace TreatBeauty.WinUI
 {
     public partial class frmLogin : Form
     {
-        ApiService service = new ApiService("BaseUser");
+        ApiService _baseUserService = new ApiService("BaseUser");
+        ApiService _employeeService = new ApiService("Employee");
+
         public frmLogin()
         {
             InitializeComponent();
         }
 
-        private async void btnLogin_Click(object sender, EventArgs e)
+
+        private async void btnLogin_Click_1(object sender, EventArgs e)
         {
             ApiService.UserName = txtUserName.Text;
             ApiService.Password = txtPassword.Text;
 
             try
             {
-                var result = await service.GetAll<IEnumerable<Model.BaseUser>>();
-                Model.BaseUser user = result.FirstOrDefault(x=>x.Email==ApiService.UserName);
+                var result = await _baseUserService.GetAll<IEnumerable<Model.BaseUser>>();
+                Model.BaseUser user = result.FirstOrDefault(x => x.Email == ApiService.UserName);
+
                 if (result != null)
                 {
-                   
-                    ApiService.UserRoles = user?.BaseUserRoles;
+                    ApiService.UserRoles = user?.BaseUserRoles.ToList();
+                    var employee = await _employeeService.GetById<Model.Employee>(user.Id);
+                    if (employee != null)
+                        ApiService.CurrentUserSalonId = employee.SalonId;
+
                     frmParent frmParent = new frmParent();
                     this.Hide();
                     frmParent.Show();
                 }
-                    
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Nije proslo");
             }
 
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
         }
     }

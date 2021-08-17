@@ -87,7 +87,6 @@ namespace TreatBeauty.WinUI.EmployeeForms
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(296, 27);
             this.txtFirstName.TabIndex = 20;
-            this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
             this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.txtFirstName_Validating);
             // 
             // txtLastName
@@ -176,7 +175,6 @@ namespace TreatBeauty.WinUI.EmployeeForms
             this.groupBox1.Size = new System.Drawing.Size(818, 515);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // btnAddEmployee
             // 

@@ -87,6 +87,7 @@
     <Compile Include="helper\ImageHelper.cs" />
     <Compile Include="helper\PasswordGenerator.cs" />
     <Compile Include="helper\PictureBoxValidator.cs" />
+    <Compile Include="helper\UserHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.Designer.cs">
@@ -129,6 +130,12 @@
     </Compile>
     <Compile Include="ServiceForms\ServiceListItem.Designer.cs">
       <DependentUpon>ServiceListItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TermForms\frmAddTerm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TermForms\frmAddTerm.Designer.cs">
+      <DependentUpon>frmAddTerm.cs</DependentUpon>
     </Compile>
     <Compile Include="Validator.cs" />
     <EmbeddedResource Include="EmployeeForms\frmAddEmployee.resx">
@@ -176,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ServiceForms\ServiceListItem.resx">
       <DependentUpon>ServiceListItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TermForms\frmAddTerm.resx">
+      <DependentUpon>frmAddTerm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

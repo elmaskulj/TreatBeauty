@@ -15,5 +15,7 @@ namespace TreatBeauty.Database
         public string Location { get; set; }
         public int CityId { get; set; }
         public  City City { get; set; }
+        public virtual ICollection<SalonServices> SalonServices { get; set; }
+
     }
 }

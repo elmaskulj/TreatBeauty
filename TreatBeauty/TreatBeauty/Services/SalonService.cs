@@ -17,7 +17,7 @@ namespace TreatBeauty.Services
         {
 
         }
-        public override IEnumerable<Model.Salon> Get(SalonSearchObject search = null)
+        public override  IEnumerable<Model.Salon> Get(SalonSearchObject search = null)
         {
             var entity = _context.Set<Database.Salon>().AsQueryable();
 
@@ -29,6 +29,7 @@ namespace TreatBeauty.Services
                 foreach (var item in search.IncludeList)
                     entity = entity.Include(item);
             }
+
 
             var list = entity.ToList();
 

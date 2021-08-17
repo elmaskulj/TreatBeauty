@@ -43,9 +43,5 @@ namespace TreatBeauty.Model
         {
             get { return BaseUser?.LastName; }
         }
-
-
-
-
     }
 }

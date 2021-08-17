@@ -72,6 +72,8 @@ namespace TreatBeauty
             services.AddScoped<ISalonService, SalonService>();
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IServiceService, ServiceService>();
+            services.AddScoped<ISalonServicesService, SalonServicesService>();
+
 
 
             services.AddTransient<IMailService, SendGridMailService>();

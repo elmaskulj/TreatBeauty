@@ -26,5 +26,6 @@ namespace TreatBeauty.Model
         {
             get { return City?.Name; }
         }
+
     }
 }

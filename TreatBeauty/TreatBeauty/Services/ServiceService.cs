@@ -28,7 +28,7 @@ namespace TreatBeauty.Services
                 foreach (var item in search.IncludeList)
                     entity = entity.Include(item);
             }
-
+           
             var list = entity.ToList();
 
             return _mapper.Map<List<Model.Service>>(list);

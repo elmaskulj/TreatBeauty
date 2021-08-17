@@ -34,7 +34,7 @@ namespace TreatBeauty.WinUI
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnService = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
             this.btnSalon = new System.Windows.Forms.Button();
             this.pnlLogo = new System.Windows.Forms.Panel();
@@ -46,7 +46,7 @@ namespace TreatBeauty.WinUI
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(48)))), ((int)(((byte)(71)))));
             this.pnlMenu.Controls.Add(this.button4);
-            this.pnlMenu.Controls.Add(this.button3);
+            this.pnlMenu.Controls.Add(this.btnService);
             this.pnlMenu.Controls.Add(this.btnEmployee);
             this.pnlMenu.Controls.Add(this.btnSalon);
             this.pnlMenu.Controls.Add(this.pnlLogo);
@@ -69,27 +69,28 @@ namespace TreatBeauty.WinUI
             this.button4.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.button4.Size = new System.Drawing.Size(295, 67);
             this.button4.TabIndex = 4;
-            this.button4.Text = "     Termini";
+            this.button4.Text = "     Termin";
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button3
+            // btnService
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(48)))), ((int)(((byte)(71)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(-3, 213);
-            this.button3.Name = "button3";
-            this.button3.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button3.Size = new System.Drawing.Size(295, 67);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "   Usluge";
-            this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnService.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(48)))), ((int)(((byte)(71)))));
+            this.btnService.FlatAppearance.BorderSize = 0;
+            this.btnService.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnService.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnService.Image = ((System.Drawing.Image)(resources.GetObject("btnService.Image")));
+            this.btnService.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnService.Location = new System.Drawing.Point(-3, 213);
+            this.btnService.Name = "btnService";
+            this.btnService.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnService.Size = new System.Drawing.Size(295, 67);
+            this.btnService.TabIndex = 3;
+            this.btnService.Text = "   Usluga";
+            this.btnService.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnService.UseVisualStyleBackColor = false;
+            this.btnService.Click += new System.EventHandler(this.btnService_Click);
             // 
             // btnEmployee
             // 
@@ -104,7 +105,7 @@ namespace TreatBeauty.WinUI
             this.btnEmployee.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnEmployee.Size = new System.Drawing.Size(295, 67);
             this.btnEmployee.TabIndex = 2;
-            this.btnEmployee.Text = "    Zaposlenici";
+            this.btnEmployee.Text = "    Zaposlenik";
             this.btnEmployee.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEmployee.UseVisualStyleBackColor = false;
             this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
@@ -122,7 +123,7 @@ namespace TreatBeauty.WinUI
             this.btnSalon.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnSalon.Size = new System.Drawing.Size(295, 67);
             this.btnSalon.TabIndex = 1;
-            this.btnSalon.Text = "    Saloni";
+            this.btnSalon.Text = "    Salon";
             this.btnSalon.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSalon.UseVisualStyleBackColor = false;
             this.btnSalon.Click += new System.EventHandler(this.button1_Click);
@@ -172,7 +173,7 @@ namespace TreatBeauty.WinUI
         private System.Windows.Forms.Panel pnlLogo;
         public System.Windows.Forms.Button btnSalon;
         public System.Windows.Forms.Button button4;
-        public System.Windows.Forms.Button button3;
+        public System.Windows.Forms.Button btnService;
         public System.Windows.Forms.Button btnEmployee;
         private System.Windows.Forms.Panel pnlParent;
     }

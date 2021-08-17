@@ -15,7 +15,8 @@ namespace TreatBeauty.WinUI
 
         public static string UserName { get; set; }
         public static string Password { get; set; }
-        public static ICollection<BaseUserRole> UserRoles { get; set; }
+        public static List<BaseUserRole> UserRoles { get; set; }
+        public static int CurrentUserSalonId{ get; set; }
 
         public ApiService(string _resource)
         {

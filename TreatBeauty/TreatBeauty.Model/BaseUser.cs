@@ -15,6 +15,10 @@ namespace TreatBeauty.Model
         public DateTime? CreatedAt { get; set; }
 
         public virtual ICollection<BaseUserRole> BaseUserRoles { get; set; }
+        public string FirstAndLastName
+        {
+            get { return $"{FirstName} {LastName}"; }
+        }
 
     }
 }

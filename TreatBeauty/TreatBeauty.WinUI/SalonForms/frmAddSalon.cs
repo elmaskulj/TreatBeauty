@@ -57,7 +57,6 @@ namespace TreatBeauty.WinUI.SalonForms
             cmbCity.DisplayMember = "Name";
             cmbCity.DataSource = result;
         }
-
         private void btnUploadPhoto_Click_1(object sender, EventArgs e)
         {
             var result = ofdImage.ShowDialog();
@@ -97,8 +96,11 @@ namespace TreatBeauty.WinUI.SalonForms
                         await _salonService.Update<Model.Salon>(_salon.Id, request);
                         MessageBox.Show(Resource.SuccessEdit);
                     }
-                    frmSalonHome frmSalonHome = new frmSalonHome();
-                    FormMaker.CreateForm(frmSalonHome, this);
+                    if (UserHelper.IsCurrentUserSuAdmin(ApiService.UserRoles))
+                    {
+                        frmSalonHome frmSalonHome = new frmSalonHome();
+                        FormMaker.CreateForm(frmSalonHome, this);
+                    }
                 }
             }
             catch (Exception ex)

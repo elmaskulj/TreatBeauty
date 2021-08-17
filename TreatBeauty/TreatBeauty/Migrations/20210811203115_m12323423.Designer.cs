@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TreatBeauty.Database;
 
 namespace TreatBeauty.Migrations
 {
     [DbContext(typeof(MyContext))]
-    partial class MyContextModelSnapshot : ModelSnapshot
+    [Migration("20210811203115_m12323423")]
+    partial class m12323423
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -294,28 +296,6 @@ namespace TreatBeauty.Migrations
                     b.ToTable("Salons");
                 });
 
-            modelBuilder.Entity("TreatBeauty.Database.SalonServices", b =>
-                {
-                    b.Property<int>("SalonServicesId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("SalonId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ServiceId")
-                        .HasColumnType("int");
-
-                    b.HasKey("SalonServicesId");
-
-                    b.HasIndex("SalonId");
-
-                    b.HasIndex("ServiceId");
-
-                    b.ToTable("SalonServices");
-                });
-
             modelBuilder.Entity("TreatBeauty.Database.Service", b =>
                 {
                     b.Property<int>("Id")
@@ -511,25 +491,6 @@ namespace TreatBeauty.Migrations
                         .IsRequired();
 
                     b.Navigation("City");
-                });
-
-            modelBuilder.Entity("TreatBeauty.Database.SalonServices", b =>
-                {
-                    b.HasOne("TreatBeauty.Database.Salon", "Salon")
-                        .WithMany()
-                        .HasForeignKey("SalonId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("TreatBeauty.Database.Service", "Service")
-                        .WithMany()
-                        .HasForeignKey("ServiceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Salon");
-
-                    b.Navigation("Service");
                 });
 
             modelBuilder.Entity("TreatBeauty.Database.Service", b =>

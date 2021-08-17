@@ -4,12 +4,9 @@ using System.Text;
 
 namespace TreatBeauty.Model
 {
-    public class ServiceSearchObject
+    public class SalonServicesSearchObject
     {
-        public int? CategoryId { get; set; }
+        public int SalonId { get; set; }
         public string[] IncludeList { get; set; }
-        public int? SalonId { get; set; }
-
-
     }
 }

@@ -37,6 +37,8 @@ namespace TreatBeauty.WinUI.ServiceForms
             this.button3 = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.fpnlServices = new System.Windows.Forms.FlowLayoutPanel();
+            this.cmbSalon = new System.Windows.Forms.ComboBox();
+            this.lblSalon = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.pnlButtons.SuspendLayout();
             this.SuspendLayout();
@@ -137,12 +139,34 @@ namespace TreatBeauty.WinUI.ServiceForms
             this.fpnlServices.Size = new System.Drawing.Size(773, 425);
             this.fpnlServices.TabIndex = 29;
             // 
+            // cmbSalon
+            // 
+            this.cmbSalon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSalon.FormattingEnabled = true;
+            this.cmbSalon.Location = new System.Drawing.Point(45, 115);
+            this.cmbSalon.Name = "cmbSalon";
+            this.cmbSalon.Size = new System.Drawing.Size(273, 28);
+            this.cmbSalon.TabIndex = 30;
+            this.cmbSalon.SelectedIndexChanged += new System.EventHandler(this.cmbSalon_SelectedIndexChanged);
+            // 
+            // lblSalon
+            // 
+            this.lblSalon.AutoSize = true;
+            this.lblSalon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSalon.Location = new System.Drawing.Point(42, 88);
+            this.lblSalon.Name = "lblSalon";
+            this.lblSalon.Size = new System.Drawing.Size(51, 20);
+            this.lblSalon.TabIndex = 31;
+            this.lblSalon.Text = "Salon";
+            // 
             // frmServiceHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(861, 644);
+            this.Controls.Add(this.lblSalon);
+            this.Controls.Add(this.cmbSalon);
             this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.fpnlServices);
@@ -154,6 +178,7 @@ namespace TreatBeauty.WinUI.ServiceForms
             this.panel1.PerformLayout();
             this.pnlButtons.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -166,5 +191,7 @@ namespace TreatBeauty.WinUI.ServiceForms
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.FlowLayoutPanel fpnlServices;
+        private System.Windows.Forms.ComboBox cmbSalon;
+        private System.Windows.Forms.Label lblSalon;
     }
 }

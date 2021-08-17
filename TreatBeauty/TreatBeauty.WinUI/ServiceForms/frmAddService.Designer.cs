@@ -48,6 +48,8 @@ namespace TreatBeauty.WinUI.ServiceForms
             this.label3 = new System.Windows.Forms.Label();
             this.lblCurrency = new System.Windows.Forms.Label();
             this.lblDuration = new System.Windows.Forms.Label();
+            this.cmbSalon = new System.Windows.Forms.ComboBox();
+            this.lblSalon = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
@@ -110,7 +112,7 @@ namespace TreatBeauty.WinUI.ServiceForms
             // 
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(48)))), ((int)(((byte)(71)))));
-            this.label4.Location = new System.Drawing.Point(37, 209);
+            this.label4.Location = new System.Drawing.Point(37, 206);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(98, 20);
             this.label4.TabIndex = 21;
@@ -130,7 +132,7 @@ namespace TreatBeauty.WinUI.ServiceForms
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(48)))), ((int)(((byte)(71)))));
-            this.label1.Location = new System.Drawing.Point(41, 332);
+            this.label1.Location = new System.Drawing.Point(41, 328);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 20);
             this.label1.TabIndex = 26;
@@ -202,7 +204,7 @@ namespace TreatBeauty.WinUI.ServiceForms
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(48)))), ((int)(((byte)(71)))));
-            this.label3.Location = new System.Drawing.Point(41, 275);
+            this.label3.Location = new System.Drawing.Point(41, 267);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 20);
             this.label3.TabIndex = 24;
@@ -231,12 +233,35 @@ namespace TreatBeauty.WinUI.ServiceForms
             this.lblDuration.TabIndex = 31;
             this.lblDuration.Text = "min";
             // 
+            // cmbSalon
+            // 
+            this.cmbSalon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSalon.FormattingEnabled = true;
+            this.cmbSalon.Location = new System.Drawing.Point(147, 390);
+            this.cmbSalon.Name = "cmbSalon";
+            this.cmbSalon.Size = new System.Drawing.Size(398, 28);
+            this.cmbSalon.TabIndex = 32;
+            // 
+            // lblSalon
+            // 
+            this.lblSalon.AutoSize = true;
+            this.lblSalon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSalon.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(48)))), ((int)(((byte)(71)))));
+            this.lblSalon.Location = new System.Drawing.Point(41, 389);
+            this.lblSalon.Name = "lblSalon";
+            this.lblSalon.Size = new System.Drawing.Size(56, 20);
+            this.lblSalon.TabIndex = 33;
+            this.lblSalon.Text = "Salon:";
+            this.lblSalon.Click += new System.EventHandler(this.label5_Click_1);
+            // 
             // frmAddService
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(843, 597);
+            this.Controls.Add(this.lblSalon);
+            this.Controls.Add(this.cmbSalon);
             this.Controls.Add(this.lblDuration);
             this.Controls.Add(this.lblCurrency);
             this.Controls.Add(this.btnAddService);
@@ -283,5 +308,7 @@ namespace TreatBeauty.WinUI.ServiceForms
         private System.Windows.Forms.Label lblDuration;
         private System.Windows.Forms.Label lblCurrency;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblSalon;
+        private System.Windows.Forms.ComboBox cmbSalon;
     }
 }

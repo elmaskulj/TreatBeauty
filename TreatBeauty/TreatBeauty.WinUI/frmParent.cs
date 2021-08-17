@@ -11,24 +11,18 @@ using TreatBeauty.WinUI.SalonForms;
 using TreatBeauty.WinUI.helper;
 using TreatBeauty.WinUI.EmployeeForms;
 using TreatBeauty.WinUI.ServiceForms;
+using TreatBeauty.Model;
+using TreatBeauty.WinUI.TermForms;
 
 namespace TreatBeauty.WinUI
 {
     public partial class frmParent : Form
     {
-        private int childFormNumber = 0;
+        ApiService _salonService = new ApiService("Salon");
 
         public frmParent()
         {
             InitializeComponent();
-        }
-
-        private void ShowNewForm(object sender, EventArgs e)
-        {
-            Form childForm = new Form();
-            childForm.MdiParent = this;
-            childForm.Text = "Window " + childFormNumber++;
-            childForm.Show();
         }
 
         private void OpenFile(object sender, EventArgs e)
@@ -56,26 +50,6 @@ namespace TreatBeauty.WinUI
         private void ExitToolsStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
-        }
-
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void ToolBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void StatusBarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
         }
 
         private void CascadeToolStripMenuItem_Click(object sender, EventArgs e)
@@ -106,19 +80,35 @@ namespace TreatBeauty.WinUI
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_Click(object sender, EventArgs e)
         {
             pnlParent.Controls.Clear();
 
-            frmSalonHome salonHome = new frmSalonHome();
+            if (UserHelper.IsCurrentUserAdmin(ApiService.UserRoles))
+            {
+                var salon = await _salonService.GetById<Salon>(ApiService.CurrentUserSalonId);
+                if (salon != null)
+                {
+                    frmAddSalon frmAddSalon = new frmAddSalon(salon);
+                    FormMaker.CreateFormFromParent(frmAddSalon, this, pnlParent);
+                }
+            }
+            else if(UserHelper.IsCurrentUserSuAdmin(ApiService.UserRoles))
+            {
+                //oprez - dodati i slucaj zaposelnika
+                frmSalonHome salonHome = new frmSalonHome();
+                FormMaker.CreateFormFromParent(salonHome, this, pnlParent);
+            }
 
-            FormMaker.CreateFormFromParent(salonHome, this, pnlParent);
-            
         }
 
         private void frmParent_Load(object sender, EventArgs e)
         {
-
+            if (!UserHelper.IsCurrentUserSuAdmin(ApiService.UserRoles) || UserHelper.IsCurrentUserAdmin(ApiService.UserRoles))
+            {
+                btnSalon.Enabled = false;
+                btnEmployee.Enabled = false;
+            }
         }
 
         private void btnEmployee_Click(object sender, EventArgs e)
@@ -129,14 +119,21 @@ namespace TreatBeauty.WinUI
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void pnlParent_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        private void btnService_Click(object sender, EventArgs e)
+        { 
             frmServiceHome serviceHome = new frmServiceHome();
             FormMaker.CreateFormFromParent(serviceHome, this, pnlParent);
         }
 
-        private void pnlParent_Paint(object sender, PaintEventArgs e)
+        private void button4_Click(object sender, EventArgs e)
         {
+            frmAddTerm frmaddTerm = new frmAddTerm();
+            FormMaker.CreateFormFromParent(frmaddTerm, this, pnlParent);
 
         }
     }

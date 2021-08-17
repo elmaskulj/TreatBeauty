@@ -33,22 +33,20 @@ namespace TreatBeauty.WinUI.EmployeeForms
         }
         public async Task LoadSalons()
         {
-            var result = await _salonService.GetAll<System.Collections.Generic.List<Salon>>();
-
-            result.Insert(0, new Salon());
-
+            List<Salon> result = new List<Salon>();
+            if (UserHelper.IsCurrentUserSuAdmin(ApiService.UserRoles))
+            {
+                result = await _salonService.GetAll<List<Salon>>();
+                result.Insert(0, new Salon());
+            }
+            else
+            {
+                var salon = await _salonService.GetById<Salon>(ApiService.CurrentUserSalonId);
+                result.Add(salon);
+            }
             cmbSalon.ValueMember = "Id";
             cmbSalon.DisplayMember = "Name";
             cmbSalon.DataSource = result;
-        }
-        private void txtFirstName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
 
         private async void btnAddEmployee_Click(object sender, EventArgs e)
@@ -67,7 +65,7 @@ namespace TreatBeauty.WinUI.EmployeeForms
                     {
                         Email = txtEmail?.Text,
                         FirstName = txtFirstName?.Text,
-                        LastName = txtFirstName?.Text,
+                        LastName = txtLastName?.Text,
                         isActive = true,
                         PhoneNumber = txtPhone?.Text,
                         Password = password,
@@ -82,7 +80,7 @@ namespace TreatBeauty.WinUI.EmployeeForms
                         baseUserResult = await _baseUserService.Update<Model.BaseUser>(_employee.Id, baseUserRequest);
                     }
 
-                    var SalonId = _employee != null ? int.Parse(((KeyValuePair<string, string>)cmbSalon.SelectedItem).Key) :(int)cmbSalon.SelectedValue;
+                    var SalonId = _employee != null ? int.Parse(((KeyValuePair<string, string>)cmbSalon.SelectedItem).Key) : (int)cmbSalon.SelectedValue;
 
                     EmployeeInsertRequest employeeRequest = new EmployeeInsertRequest
                     {

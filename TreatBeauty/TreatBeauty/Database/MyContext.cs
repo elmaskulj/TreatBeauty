@@ -30,6 +30,8 @@ namespace TreatBeauty.Database
         public virtual DbSet<Coupon> Coupons { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<BaseUserRole> BaseUserRoles { get; set; }
+        public virtual DbSet<SalonServices> SalonServices { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)

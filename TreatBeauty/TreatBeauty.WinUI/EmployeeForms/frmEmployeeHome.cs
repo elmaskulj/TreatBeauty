@@ -23,8 +23,17 @@ namespace TreatBeauty.WinUI.EmployeeForms
         }
         public async Task LoadSalons()
         {
-            var result = await _salonService.GetAll<List<Salon>>();
-            result.Insert(0, new Salon());
+            List<Salon> result = new List<Salon>();
+
+            if (UserHelper.IsCurrentUserAdmin(ApiService.UserRoles)) {
+                var salon= await _salonService.GetById<Salon>(ApiService.CurrentUserSalonId);
+                result.Add(salon);
+            }
+            else
+            {
+                result = await _salonService.GetAll<List<Salon>>();
+                result.Insert(0, new Salon());
+            }
 
             cmbSalon.ValueMember = "Id";
             cmbSalon.DisplayMember = "Name";
@@ -32,7 +41,7 @@ namespace TreatBeauty.WinUI.EmployeeForms
         }
         public async Task LoadEmplyees()
         {
-            if (cmbSalon.SelectedIndex != 0)
+            if (cmbSalon.SelectedIndex != 0 || cmbSalon.Items.Count==1)
             {
                 int Salonid;
                 bool SalonIdOK = Int32.TryParse(cmbSalon.SelectedValue.ToString(), out Salonid);
@@ -61,8 +70,6 @@ namespace TreatBeauty.WinUI.EmployeeForms
                         editButton.DefaultCellStyle.BackColor = Color.White;
                         dgvEmployee.Columns.Add(editButton);
                     }
-
-
                 }
             }
 
@@ -73,9 +80,7 @@ namespace TreatBeauty.WinUI.EmployeeForms
         private async void cmbSalon_SelectedIndexChanged(object sender, EventArgs e)
         {
             await LoadEmplyees();
-
         }
-
 
         private async void frmEmployeeHome_Load(object sender, EventArgs e)
         {

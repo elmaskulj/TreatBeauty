@@ -14,5 +14,7 @@ namespace TreatBeauty.Database
         public byte[] Photo { get; set; }
         public  int CategoryId { get; set; }
         public  Category Category { get; set; }
+        public virtual ICollection<SalonServices> SalonServices { get; set; }
+
     }
 }

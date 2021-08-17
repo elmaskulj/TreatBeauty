@@ -16,6 +16,9 @@ namespace TreatBeauty.WinUI.ServiceForms
     public partial class frmServiceHome : Form
     {
         private readonly ApiService _service = new ApiService("Service");
+        private readonly ApiService _salonService = new ApiService("Salon");
+        private readonly ApiService _salonServicesService = new ApiService("SalonServices");
+
         private bool isCollapsed = false;
         public frmServiceHome()
         {
@@ -40,55 +43,87 @@ namespace TreatBeauty.WinUI.ServiceForms
 
         private async void frmServiceHome_Load(object sender, EventArgs e)
         {
-            await LoadServices();
+            await LoadSalons();
+            //await LoadServices();
+        }
+        private async Task LoadSalons()
+        {
+            List<Salon> result = new List<Salon>();
 
+            if (UserHelper.IsCurrentUserAdmin(ApiService.UserRoles))
+            {
+                var salon = await _salonService.GetById<Salon>(ApiService.CurrentUserSalonId);
+                result.Add(salon);
+            }
+            else
+                result = await _salonService.GetAll<List<Salon>>();
+
+            cmbSalon.ValueMember = "Id";
+            cmbSalon.DisplayMember = "Name";
+            cmbSalon.DataSource = result;
         }
 
-        private async Task LoadServices()
+        private async Task LoadServices(int salonId)
         {
-            ServiceSearchObject search = new ServiceSearchObject()
+            try
             {
-                IncludeList = new string[] {
-                    "Category",
-                },
-            };
-
-            var result = await _service.GetAll<IEnumerable<Model.Service>>(search);
-
-            foreach (var categoryItem in result.GroupBy(x => new { x.CategoryId, x.Category.Name }).ToList())
-            {
-                Label lblCategoryName = new Label()
+                SalonServicesSearchObject search = new SalonServicesSearchObject()
                 {
-                    Text = categoryItem.Key.Name,
-                    Font = new Font("Arial", 12, FontStyle.Bold),
-                    ForeColor = Color.FromArgb(2, 48, 71),
-                    Margin = new Padding(8)
+                    IncludeList = new string[] {
+                    "Service",
+                    "Service.Category",
+                    "Salon"
+
+                },
+                    SalonId = salonId,
                 };
 
-                fpnlServices.Controls.Add(lblCategoryName);
+                var result = await _salonServicesService.GetAll<IEnumerable<Model.SalonServices>>(search);
 
-                foreach (var listItem in result)
+                List<Service> serviceList = new List<Service>();
+
+                result.ToList().ForEach(x =>
                 {
-                    if (listItem.CategoryId == categoryItem.Key.CategoryId)
+                    serviceList.Add(x.Service);
+                });
+
+                fpnlServices.Controls.Clear();
+                foreach (var categoryItem in serviceList.GroupBy(x => new { x.CategoryId, x.Category.Name }).ToList())
+                {
+                    Label lblCategoryName = new Label()
                     {
-                        ServiceListItem serviceItem = new ServiceListItem()
+                        Text = categoryItem.Key.Name,
+                        Font = new Font("Arial", 12, FontStyle.Bold),
+                        ForeColor = Color.FromArgb(2, 48, 71),
+                        Margin = new Padding(8)
+                    };
+
+                    fpnlServices.Controls.Add(lblCategoryName);
+
+                    foreach (var listItem in serviceList)
+                    {
+                        if (listItem.CategoryId == categoryItem.Key.CategoryId)
                         {
-                            Price = listItem.Price + " KM",
-                            Title = listItem.Name,
-                            Service=listItem
-                        };
-                        fpnlServices.Controls.Add(serviceItem);
+                            ServiceListItem serviceItem = new ServiceListItem()
+                            {
+                                Price = listItem.Price + " KM",
+                                Title = listItem.Name,
+                                Service = listItem
+                            };
+                            fpnlServices.Controls.Add(serviceItem);
+                        }
                     }
+
                 }
 
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
 
         }
 
-        private void btnAddEmployee_Click(object sender, EventArgs e)
-        {
-
-        }
 
 
         private void button3_Click(object sender, EventArgs e)
@@ -128,6 +163,16 @@ namespace TreatBeauty.WinUI.ServiceForms
 
             }
 
+        }
+
+        private async void cmbSalon_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            int salonId;
+            if (int.TryParse(cmbSalon.SelectedValue.ToString(), out salonId))
+            {
+                await LoadServices(salonId);
+            }
         }
     }
 }

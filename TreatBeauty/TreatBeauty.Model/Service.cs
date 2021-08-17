@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace TreatBeauty.Model
@@ -13,6 +14,11 @@ namespace TreatBeauty.Model
         public byte[] Photo { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+
+        public string ServiceForCombo
+        {
+            get { return $"{Name} -  {Price} KM - {Duration} min"; }
+        }
 
     }
 }
