@@ -126,6 +126,12 @@
   <data name="ErrorMsg" xml:space="preserve">
     <value>Došlo je do greške.</value>
   </data>
+  <data name="PastDateErrorMessage" xml:space="preserve">
+    <value>Nije moguće kreirati termin na datum koji je prošao.</value>
+  </data>
+  <data name="StartAndEndDurationErrorMessage" xml:space="preserve">
+    <value>Vrijeme početka i kraja termina nije podudarno sa trajanjem usluge.</value>
+  </data>
   <data name="SuccessAdd" xml:space="preserve">
     <value>Uspješno dodavanje.</value>
   </data>

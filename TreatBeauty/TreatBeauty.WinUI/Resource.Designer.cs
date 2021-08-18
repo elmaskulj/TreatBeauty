@@ -88,6 +88,24 @@ namespace TreatBeauty.WinUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nije moguće kreirati termin na datum koji je prošao..
+        /// </summary>
+        internal static string PastDateErrorMessage {
+            get {
+                return ResourceManager.GetString("PastDateErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vrijeme početka i kraja termina nije podudarno sa trajanjem usluge..
+        /// </summary>
+        internal static string StartAndEndDurationErrorMessage {
+            get {
+                return ResourceManager.GetString("StartAndEndDurationErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Uspješno dodavanje..
         /// </summary>
         internal static string SuccessAdd {

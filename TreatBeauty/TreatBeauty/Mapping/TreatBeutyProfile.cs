@@ -26,6 +26,8 @@ namespace TreatBeauty.Mapping
             CreateMap<Model.Requests.EmployeeInsertRequest, Database.Employee>();
             CreateMap<Database.Employee, Model.Employee>();
             CreateMap<Database.SalonServices, Model.SalonServices>().ReverseMap();
+            CreateMap<Model.Term, Database.Term>().ReverseMap();
+            CreateMap<Model.Requests.TermInsertRequest, Database.Term>().ReverseMap();
 
 
 

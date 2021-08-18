@@ -29,6 +29,7 @@ namespace TreatBeauty.WinUI.TermForms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblHeader = new System.Windows.Forms.Label();
             this.cmbService = new System.Windows.Forms.ComboBox();
@@ -48,9 +49,11 @@ namespace TreatBeauty.WinUI.TermForms
             this.label2 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -130,7 +133,6 @@ namespace TreatBeauty.WinUI.TermForms
             this.dtpEnd.Name = "dtpEnd";
             this.dtpEnd.Size = new System.Drawing.Size(147, 27);
             this.dtpEnd.TabIndex = 20;
-            this.dtpEnd.ValueChanged += new System.EventHandler(this.dtpEnd_ValueChanged);
             // 
             // dateTimePicker1
             // 
@@ -150,7 +152,6 @@ namespace TreatBeauty.WinUI.TermForms
             this.label5.Size = new System.Drawing.Size(64, 20);
             this.label5.TabIndex = 28;
             this.label5.Text = "Datum:";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // panel2
             // 
@@ -193,6 +194,7 @@ namespace TreatBeauty.WinUI.TermForms
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.Size = new System.Drawing.Size(335, 27);
             this.dateTimePicker2.TabIndex = 27;
+            this.dateTimePicker2.Validating += new System.ComponentModel.CancelEventHandler(this.dateTimePicker2_Validating);
             // 
             // btnAddTerm
             // 
@@ -205,6 +207,7 @@ namespace TreatBeauty.WinUI.TermForms
             this.btnAddTerm.TabIndex = 30;
             this.btnAddTerm.Text = "Sačuvaj";
             this.btnAddTerm.UseVisualStyleBackColor = false;
+            this.btnAddTerm.Click += new System.EventHandler(this.btnAddTerm_Click);
             // 
             // cmbSalon
             // 
@@ -250,6 +253,10 @@ namespace TreatBeauty.WinUI.TermForms
             this.label1.TabIndex = 36;
             this.label1.Text = "Vrijeme kraja:";
             // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // frmAddTerm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -280,6 +287,7 @@ namespace TreatBeauty.WinUI.TermForms
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -306,5 +314,6 @@ namespace TreatBeauty.WinUI.TermForms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }

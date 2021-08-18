@@ -17,6 +17,7 @@ using Microsoft.OpenApi.Models;
 using TreatBeauty.Database;
 using TreatBeauty.Filters;
 using TreatBeauty.Interfaces;
+using TreatBeauty.Model.Requests;
 using TreatBeauty.Security;
 using TreatBeauty.Services;
 
@@ -73,6 +74,7 @@ namespace TreatBeauty
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IServiceService, ServiceService>();
             services.AddScoped<ISalonServicesService, SalonServicesService>();
+            services.AddScoped<ICrudService<Model.Term, object, TermInsertRequest, TermInsertRequest>, TermService>();
 
 
 
