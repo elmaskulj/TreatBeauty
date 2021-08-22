@@ -1,5 +1,7 @@
 ﻿using System.Windows.Forms;
 using System.ComponentModel;
+using System;
+using System.Text.RegularExpressions;
 
 namespace TreatBeauty.WinUI
 {
@@ -15,7 +17,30 @@ namespace TreatBeauty.WinUI
             else
                 err.SetError(textBox, null);
         }
+        public static void ObaveznoPoljeTxtBrojcanaVrijednost(TextBox textBox, CancelEventArgs e, ErrorProvider err, string poruka)
+        {
+            Regex r = new Regex(@"^[1-9][\.\d]*(,\d+)?$");
+           if(r.IsMatch(textBox.Text.ToString()))
+            {
+                err.SetError(textBox, null);
+            }
+            else
+            {
+                err.SetError(textBox, poruka);
+                e.Cancel = true;
 
+            }
+        }
+        public static void ValidanDatum(DateTimePicker date, CancelEventArgs e, ErrorProvider err, string poruka)
+        {
+            if (date.Value.Date< DateTime.Now.Date)
+            {
+                err.SetError(date, poruka);
+                e.Cancel = true;
+            }
+            else
+                err.SetError(date, null);
+        }
         public static void ObaveznoPoljeDuzina(TextBox txtBox, CancelEventArgs e, ErrorProvider err, string poruka)
         {
             if (txtBox.Text.Length > 255)
@@ -53,7 +78,7 @@ namespace TreatBeauty.WinUI
 
         public static void ObaveznoPoljeComboBox(ComboBox cmb, CancelEventArgs e, ErrorProvider err, string poruka)
         {
-            if (cmb.SelectedIndex == 0)
+            if (cmb.SelectedValue == null)
             {
                 err.SetError(cmb, poruka);
                 e.Cancel = true;

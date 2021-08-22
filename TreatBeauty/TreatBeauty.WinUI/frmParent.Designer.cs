@@ -33,6 +33,8 @@ namespace TreatBeauty.WinUI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmParent));
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.pnlMenu = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btnNews = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.btnService = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
@@ -45,6 +47,8 @@ namespace TreatBeauty.WinUI
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(48)))), ((int)(((byte)(71)))));
+            this.pnlMenu.Controls.Add(this.button1);
+            this.pnlMenu.Controls.Add(this.btnNews);
             this.pnlMenu.Controls.Add(this.button4);
             this.pnlMenu.Controls.Add(this.btnService);
             this.pnlMenu.Controls.Add(this.btnEmployee);
@@ -56,6 +60,42 @@ namespace TreatBeauty.WinUI
             this.pnlMenu.Size = new System.Drawing.Size(295, 644);
             this.pnlMenu.TabIndex = 4;
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(48)))), ((int)(((byte)(71)))));
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(-6, 431);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(295, 67);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "     Kupon";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // btnNews
+            // 
+            this.btnNews.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(48)))), ((int)(((byte)(71)))));
+            this.btnNews.FlatAppearance.BorderSize = 0;
+            this.btnNews.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNews.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNews.Image = ((System.Drawing.Image)(resources.GetObject("btnNews.Image")));
+            this.btnNews.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNews.Location = new System.Drawing.Point(-3, 360);
+            this.btnNews.Name = "btnNews";
+            this.btnNews.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btnNews.Size = new System.Drawing.Size(295, 67);
+            this.btnNews.TabIndex = 5;
+            this.btnNews.Text = "     Novost";
+            this.btnNews.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnNews.UseVisualStyleBackColor = false;
+            this.btnNews.Click += new System.EventHandler(this.btnNews_Click);
+            // 
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(48)))), ((int)(((byte)(71)))));
@@ -64,7 +104,7 @@ namespace TreatBeauty.WinUI
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Image = ((System.Drawing.Image)(resources.GetObject("button4.Image")));
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(-6, 286);
+            this.button4.Location = new System.Drawing.Point(-6, 289);
             this.button4.Name = "button4";
             this.button4.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.button4.Size = new System.Drawing.Size(295, 67);
@@ -82,7 +122,7 @@ namespace TreatBeauty.WinUI
             this.btnService.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnService.Image = ((System.Drawing.Image)(resources.GetObject("btnService.Image")));
             this.btnService.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnService.Location = new System.Drawing.Point(-3, 213);
+            this.btnService.Location = new System.Drawing.Point(-3, 218);
             this.btnService.Name = "btnService";
             this.btnService.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnService.Size = new System.Drawing.Size(295, 67);
@@ -100,7 +140,7 @@ namespace TreatBeauty.WinUI
             this.btnEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployee.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployee.Image")));
             this.btnEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEmployee.Location = new System.Drawing.Point(-3, 149);
+            this.btnEmployee.Location = new System.Drawing.Point(-3, 147);
             this.btnEmployee.Name = "btnEmployee";
             this.btnEmployee.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.btnEmployee.Size = new System.Drawing.Size(295, 67);
@@ -176,6 +216,8 @@ namespace TreatBeauty.WinUI
         public System.Windows.Forms.Button btnService;
         public System.Windows.Forms.Button btnEmployee;
         private System.Windows.Forms.Panel pnlParent;
+        public System.Windows.Forms.Button btnNews;
+        public System.Windows.Forms.Button button1;
     }
 }
 

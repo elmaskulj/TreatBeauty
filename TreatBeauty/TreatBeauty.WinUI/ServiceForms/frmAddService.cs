@@ -155,16 +155,6 @@ namespace TreatBeauty.WinUI.ServiceForms
 
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void txtName_Validating(object sender, CancelEventArgs e)
         {
             Validator.ObaveznoPoljeTxt(sender as TextBox, e, errorProvider, Properties.Resources.RequiredMessage);
@@ -177,17 +167,13 @@ namespace TreatBeauty.WinUI.ServiceForms
 
         private void txtPrice_Validating(object sender, CancelEventArgs e)
         {
-            Validator.ObaveznoPoljeTxt(sender as TextBox, e, errorProvider, Properties.Resources.RequiredMessage);
+            Validator.ObaveznoPoljeTxtBrojcanaVrijednost(sender as TextBox, e, errorProvider,Resource.RequiredNumberValue);
         }
 
         private void txtDuration_Validating(object sender, CancelEventArgs e)
         {
-            Validator.ObaveznoPoljeTxt(sender as TextBox, e, errorProvider, Properties.Resources.RequiredMessage);
+            Validator.ObaveznoPoljeTxtBrojcanaVrijednost(sender as TextBox, e, errorProvider, Resource.RequiredNumberValue);
         }
 
-        private void label5_Click_1(object sender, EventArgs e)
-        {
-
-        }
     }
 }

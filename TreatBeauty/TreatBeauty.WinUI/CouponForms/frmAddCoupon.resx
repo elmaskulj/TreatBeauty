@@ -117,37 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CurrencyKM" xml:space="preserve">
-    <value>KM</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAepJREFUSEvt
+        lj9LW1EYh5NCCw4FqZRim0gWXYTSDv0QQhv8Ag7d1Jg4ih/AQTBDSwstlQ4d2zltR51c7WT8BgoiJAqC
+        f4jP7943073n3JObIB184IHDOb/3jfd47p/CPf8dvV5vCuv4F9t4bmqsuRUsW3x4aPYCv+I1ZnGDP7Fi
+        5fmgwTye4aB0sWptBoPCVdQV5EW1DWsXBgW60mF+tI96hF05wRLm2V4X2vbn1t4Noe9RfLR8s/bpENAt
+        4zq9TYsptxFPRfyyac1vxVMJ1LNksSQsNqJYOlf42nKP8RgvcdrmXqEyLmrKpcLinzjjZA8fWFan/pON
+        H+I++mgpmwqLh3HGy6JlH+ETG69rIYO2sqmwqBOYxSk+sxLVzOCFFjLoWkkSFkNuoyMctxLVVFDP7Cw6
+        VpKExZCtXrDsGBZtvKaFDLxbnXW4drD/Y018b2Mdrn/ow3u49GpzoVvlpeVmUbfSCU7Y3Bv0vcGWlEuF
+        xTK6ijctU8TdaCbmc1QMjD/GUwn0R7sfIILAdhQdLV+svRtCevGH3FahdHDS2vshOIchXxxZ6LX4ztqG
+        QYGe28N+CNSt3WBQWMU8267tfWtt8kGDp/gBfW+ePrrKHxj2Pw2BZvoyqeFvPEA9XqXGLVxG/y1zz91T
+        KNwCMxTvBN0+X8EAAAAASUVORK5CYII=
+</value>
   </data>
-  <data name="DurationMin" xml:space="preserve">
-    <value>min</value>
-  </data>
-  <data name="EndDateEarierThenStartDate" xml:space="preserve">
-    <value>Datum isteka ne može biti mlađi od datuma početka.</value>
-  </data>
-  <data name="ErrorMsg" xml:space="preserve">
-    <value>Došlo je do greške.</value>
-  </data>
-  <data name="NewsEdit" xml:space="preserve">
-    <value>Uređivanje novosti</value>
-  </data>
-  <data name="PastDateErrorMessage" xml:space="preserve">
-    <value>Nije moguće kreirati termin na datum koji je prošao.</value>
-  </data>
-  <data name="PastDateErrorMessageCoupon" xml:space="preserve">
-    <value>Nije moguće kreirati kupon na datum koji je prošao.</value>
-  </data>
-  <data name="RequiredNumberValue" xml:space="preserve">
-    <value>Polje treba sadržavati brojčanu vrijednost.</value>
-  </data>
-  <data name="StartAndEndDurationErrorMessage" xml:space="preserve">
-    <value>Vrijeme početka i kraja termina nije podudarno sa trajanjem usluge.</value>
-  </data>
-  <data name="SuccessAdd" xml:space="preserve">
-    <value>Uspješno dodavanje.</value>
-  </data>
-  <data name="SuccessEdit" xml:space="preserve">
-    <value>Uspješna izmjena.</value>
-  </data>
+  <metadata name="errorProvider.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

@@ -117,37 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CurrencyKM" xml:space="preserve">
-    <value>KM</value>
-  </data>
-  <data name="DurationMin" xml:space="preserve">
-    <value>min</value>
-  </data>
-  <data name="EndDateEarierThenStartDate" xml:space="preserve">
-    <value>Datum isteka ne može biti mlađi od datuma početka.</value>
-  </data>
-  <data name="ErrorMsg" xml:space="preserve">
-    <value>Došlo je do greške.</value>
-  </data>
-  <data name="NewsEdit" xml:space="preserve">
-    <value>Uređivanje novosti</value>
-  </data>
-  <data name="PastDateErrorMessage" xml:space="preserve">
-    <value>Nije moguće kreirati termin na datum koji je prošao.</value>
-  </data>
-  <data name="PastDateErrorMessageCoupon" xml:space="preserve">
-    <value>Nije moguće kreirati kupon na datum koji je prošao.</value>
-  </data>
-  <data name="RequiredNumberValue" xml:space="preserve">
-    <value>Polje treba sadržavati brojčanu vrijednost.</value>
-  </data>
-  <data name="StartAndEndDurationErrorMessage" xml:space="preserve">
-    <value>Vrijeme početka i kraja termina nije podudarno sa trajanjem usluge.</value>
-  </data>
-  <data name="SuccessAdd" xml:space="preserve">
-    <value>Uspješno dodavanje.</value>
-  </data>
-  <data name="SuccessEdit" xml:space="preserve">
-    <value>Uspješna izmjena.</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnAddEmployee.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACpJREFUOE9j
+        oCn4DwRQJnlg1AASDAApJBVAteIHRCvEBUYNoIIBdAAMDADSD2OddIxgcwAAAABJRU5ErkJggg==
+</value>
   </data>
 </root>

@@ -79,6 +79,15 @@ namespace TreatBeauty.WinUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Datum isteka ne može biti mlađi od datuma početka..
+        /// </summary>
+        internal static string EndDateEarierThenStartDate {
+            get {
+                return ResourceManager.GetString("EndDateEarierThenStartDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Došlo je do greške..
         /// </summary>
         internal static string ErrorMsg {
@@ -88,11 +97,38 @@ namespace TreatBeauty.WinUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Uređivanje novosti.
+        /// </summary>
+        internal static string NewsEdit {
+            get {
+                return ResourceManager.GetString("NewsEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nije moguće kreirati termin na datum koji je prošao..
         /// </summary>
         internal static string PastDateErrorMessage {
             get {
                 return ResourceManager.GetString("PastDateErrorMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Nije moguće kreirati kupon na datum koji je prošao..
+        /// </summary>
+        internal static string PastDateErrorMessageCoupon {
+            get {
+                return ResourceManager.GetString("PastDateErrorMessageCoupon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Polje treba sadržavati brojčanu vrijednost..
+        /// </summary>
+        internal static string RequiredNumberValue {
+            get {
+                return ResourceManager.GetString("RequiredNumberValue", resourceCulture);
             }
         }
         

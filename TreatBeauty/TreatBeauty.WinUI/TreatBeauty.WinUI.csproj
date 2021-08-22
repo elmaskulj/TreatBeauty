@@ -33,16 +33,64 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentScheduler, Version=5.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentScheduler.5.5.1\lib\netstandard2.0\FluentScheduler.dll</HintPath>
+    </Reference>
     <Reference Include="Flurl, Version=3.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Flurl.3.0.2\lib\net472\Flurl.dll</HintPath>
     </Reference>
     <Reference Include="Flurl.Http, Version=3.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Flurl.Http.3.2.0\lib\net472\Flurl.Http.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Exchange.WebServices, Version=15.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Exchange.WebServices.2.2\lib\40\Microsoft.Exchange.WebServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Exchange.WebServices.Auth, Version=15.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Exchange.WebServices.2.2\lib\40\Microsoft.Exchange.WebServices.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework" />
+    <Reference Include="Syncfusion.Grid.Base, Version=19.2460.0.56, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Grid.Base.19.2.0.56\lib\net46\Syncfusion.Grid.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Grid.Windows, Version=19.2460.0.56, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Grid.Windows.19.2.0.56\lib\net46\Syncfusion.Grid.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=19.2460.0.56, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.19.2.0.56\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Schedule.Base, Version=19.2460.0.56, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Schedule.Base.19.2.0.56\lib\net46\Syncfusion.Schedule.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Schedule.Windows, Version=19.2460.0.56, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Schedule.Windows.19.2.0.56\lib\net46\Syncfusion.Schedule.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Base, Version=19.2460.0.56, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Shared.Base.19.2.0.56\lib\net46\Syncfusion.Shared.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.Windows, Version=19.2460.0.56, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Shared.Windows.19.2.0.56\lib\net46\Syncfusion.Shared.Windows.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.SpellChecker.Base, Version=19.2460.0.56, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.SpellChecker.Base.19.2.0.56\lib\net46\Syncfusion.SpellChecker.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Base, Version=19.2460.0.56, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Tools.Base.19.2.0.56\lib\net46\Syncfusion.Tools.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Tools.Windows, Version=19.2460.0.56, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Tools.Windows.19.2.0.56\lib\net46\Syncfusion.Tools.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -58,6 +106,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApiService.cs" />
+    <Compile Include="CouponForms\frmAddCoupon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CouponForms\frmAddCoupon.Designer.cs">
+      <DependentUpon>frmAddCoupon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CouponForms\frmCouponHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CouponForms\frmCouponHome.Designer.cs">
+      <DependentUpon>frmCouponHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="CurrentUser\CurrentUser.cs" />
     <Compile Include="EmployeeForms\frmAddEmployee.cs">
       <SubType>Form</SubType>
@@ -88,6 +148,24 @@
     <Compile Include="helper\PasswordGenerator.cs" />
     <Compile Include="helper\PictureBoxValidator.cs" />
     <Compile Include="helper\UserHelper.cs" />
+    <Compile Include="NewsForms\frmAddNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewsForms\frmAddNew.Designer.cs">
+      <DependentUpon>frmAddNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewsForms\frmNewsHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewsForms\frmNewsHome.Designer.cs">
+      <DependentUpon>frmNewsHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewsForms\NewsListItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NewsForms\NewsListItem.Designer.cs">
+      <DependentUpon>NewsListItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource.Designer.cs">
@@ -131,13 +209,26 @@
     <Compile Include="ServiceForms\ServiceListItem.Designer.cs">
       <DependentUpon>ServiceListItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="TermForms\Calender.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TermForms\Calender.Designer.cs">
+      <DependentUpon>Calender.cs</DependentUpon>
+    </Compile>
     <Compile Include="TermForms\frmAddTerm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TermForms\frmAddTerm.Designer.cs">
       <DependentUpon>frmAddTerm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TermForms\SimpleScheduleDataProvider.cs" />
     <Compile Include="Validator.cs" />
+    <EmbeddedResource Include="CouponForms\frmAddCoupon.resx">
+      <DependentUpon>frmAddCoupon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CouponForms\frmCouponHome.resx">
+      <DependentUpon>frmCouponHome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EmployeeForms\frmAddEmployee.resx">
       <DependentUpon>frmAddEmployee.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -151,6 +242,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmParent.resx">
       <DependentUpon>frmParent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewsForms\frmAddNew.resx">
+      <DependentUpon>frmAddNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewsForms\frmNewsHome.resx">
+      <DependentUpon>frmNewsHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewsForms\NewsListItem.resx">
+      <DependentUpon>NewsListItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -183,6 +283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ServiceForms\ServiceListItem.resx">
       <DependentUpon>ServiceListItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TermForms\Calender.resx">
+      <DependentUpon>Calender.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TermForms\frmAddTerm.resx">
       <DependentUpon>frmAddTerm.cs</DependentUpon>

@@ -28,6 +28,14 @@ namespace TreatBeauty.Mapping
             CreateMap<Database.SalonServices, Model.SalonServices>().ReverseMap();
             CreateMap<Model.Term, Database.Term>().ReverseMap();
             CreateMap<Model.Requests.TermInsertRequest, Database.Term>().ReverseMap();
+            CreateMap<Model.News, Database.News>().ReverseMap();
+            CreateMap<Model.Requests.NewsInsertRequest, Database.News>();
+            CreateMap<Model.Requests.CouponInsertRequest, Database.Coupon>();
+            CreateMap<Database.Coupon, Model.Coupon>();
+
+
+
+
 
 
 

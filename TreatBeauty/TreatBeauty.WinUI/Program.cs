@@ -6,6 +6,9 @@ using System.Windows.Forms;
 using TreatBeauty.WinUI.SalonForms;
 using TreatBeauty.WinUI.EmployeeForms;
 using TreatBeauty.WinUI.ServiceForms;
+using TreatBeauty.WinUI.TermForms;
+using TreatBeauty.WinUI.NewsForms;
+
 
 namespace TreatBeauty.WinUI
 {

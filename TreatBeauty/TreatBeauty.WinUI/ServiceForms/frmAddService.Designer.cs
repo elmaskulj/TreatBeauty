@@ -64,7 +64,6 @@ namespace TreatBeauty.WinUI.ServiceForms
             this.panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.panel1.Size = new System.Drawing.Size(843, 70);
             this.panel1.TabIndex = 18;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // lblHeader
             // 
@@ -220,7 +219,6 @@ namespace TreatBeauty.WinUI.ServiceForms
             this.lblCurrency.Size = new System.Drawing.Size(34, 20);
             this.lblCurrency.TabIndex = 30;
             this.lblCurrency.Text = "KM";
-            this.lblCurrency.Click += new System.EventHandler(this.label5_Click);
             // 
             // lblDuration
             // 
@@ -252,7 +250,7 @@ namespace TreatBeauty.WinUI.ServiceForms
             this.lblSalon.Size = new System.Drawing.Size(56, 20);
             this.lblSalon.TabIndex = 33;
             this.lblSalon.Text = "Salon:";
-            this.lblSalon.Click += new System.EventHandler(this.label5_Click_1);
+           
             // 
             // frmAddService
             // 

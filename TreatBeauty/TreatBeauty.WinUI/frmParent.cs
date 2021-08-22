@@ -13,6 +13,10 @@ using TreatBeauty.WinUI.EmployeeForms;
 using TreatBeauty.WinUI.ServiceForms;
 using TreatBeauty.Model;
 using TreatBeauty.WinUI.TermForms;
+using TreatBeauty.WinUI.NewsForms;
+using TreatBeauty.WinUI.CouponForms;
+
+
 
 namespace TreatBeauty.WinUI
 {
@@ -134,6 +138,20 @@ namespace TreatBeauty.WinUI
         {
             frmAddTerm frmaddTerm = new frmAddTerm();
             FormMaker.CreateFormFromParent(frmaddTerm, this, pnlParent);
+
+        }
+
+        private void btnNews_Click(object sender, EventArgs e)
+        {
+            frmNewsHome frmNewsHome = new frmNewsHome();
+            FormMaker.CreateFormFromParent(frmNewsHome, this, pnlParent);
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            frmCouponHome frmCouponHome = new frmCouponHome();
+            FormMaker.CreateFormFromParent(frmCouponHome, this, pnlParent);
 
         }
     }

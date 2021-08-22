@@ -121,6 +121,25 @@
     <value>387, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAPtJREFUSEvt
+        k8EOwUAURWuNDX9DggT9I6z9kZD4HnwGC+6d3nqDaaeSSVj0JCfp3MXVvnmylv/hnhjVGsqToVpDuc8J
+        zmEXLuAZNka1hnIfls/gAU7hEvqs4bZ4/ES1hnKfHmQ52cN+8ejguQM37hRAtYZyH46Fb86yCSy/gKMa
+        wDG8MQihWkO5D++ApfySHLL4CkdwCC+wEtUaymOsIEezc6caVGsor+MIWc7LjaJaQ3kVHAfHwvFwTNEV
+        Vq2hPAQvkhfKiy2LYiv81Q9wFTkablNJ3Qo7VGsoD8E/0/vcq1b4iWoN5U0JrfALqjWUJ0O1hvJkqLbl
+        52TZAw2LzfyUMu/4AAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="btnNews.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAKlJREFUSEvt
+        lVEKwjAQRPPVQ2k9gHiugjcTr6HtOeLGfWRbymJd/RHzYKGZGSaEBJoam8k5n2RGmXe5yxyp8SEY5UaN
+        D8Ew1PiQm7PDWiFerxEDy4dcBdmFWAW56FeZC0vjmVrSY60Q76ARA6v2sDTQw1DzZxuEXhHLTRu0S16C
+        Puf37mBSK0w51V4/80itIeJZva8wUGuI2MmUTT45SflhDTIdtY1XpPQAuYdCsU6vZ4AAAAAASUVORK5C
+        YII=
+</value>
+  </data>
   <data name="button4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAedJREFUSEvd

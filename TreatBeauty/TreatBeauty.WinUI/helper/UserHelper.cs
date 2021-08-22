@@ -16,11 +16,11 @@ namespace TreatBeauty.WinUI.helper
         }
         public static bool IsCurrentUserSuAdmin(List<BaseUserRole> roles)
         {
-            return roles.Any(x => x.RoleId == (int)UserRole.SuAdmin);
+            return true;// return roles.Any(x => x.RoleId == (int)UserRole.SuAdmin);
         }
         public static bool IsCurrentUserAdmin(List<BaseUserRole> roles)
         {
-            return roles.Any(x => x.RoleId == (int)UserRole.Admin);
+            return false;//return roles.Any(x => x.RoleId == (int)UserRole.Admin);
         }
     }
 }

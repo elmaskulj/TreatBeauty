@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-#nullable disable
-
-namespace TreatBeauty.Database
+namespace TreatBeauty.Model.Requests
 {
-    public partial class News
+    public class NewsInsertRequest
     {
-        public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
         public DateTime? CreatedAt { get; set; }
         public byte[] Photo { get; set; }
         public int SalonId { get; set; }
-        public  Salon Salon { get; set; }
+       // public Salon Salon { get; set; }
         public bool Active { get; set; }
     }
 }
