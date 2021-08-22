@@ -7,9 +7,9 @@ using TreatBeauty.Model;
 
 namespace TreatBeauty.Controllers
 {
-    public class TermController : CrudController<Model.Term, object, TermInsertRequest, TermInsertRequest>
+    public class TermController : CrudController<Model.Term, TermSearchObject, TermInsertRequest, TermInsertRequest>
     {
-        public TermController(ICrudService<Model.Term, object, TermInsertRequest, TermInsertRequest> service) : base(service) { }
+        public TermController(ITermService service) : base(service) { }
     }
 }
 

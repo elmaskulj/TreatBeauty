@@ -74,9 +74,11 @@ namespace TreatBeauty
             services.AddScoped<IEmployeeService, EmployeeService>();
             services.AddScoped<IServiceService, ServiceService>();
             services.AddScoped<ISalonServicesService, SalonServicesService>();
-            services.AddScoped<ICrudService<Model.Term, object, TermInsertRequest, TermInsertRequest>, TermService>();
+            services.AddScoped<ITermService, TermService>();
             services.AddScoped<INewsService,NewsService>();
             services.AddScoped<ICouponService, CouponService>();
+            services.AddScoped<ICustomerService, CustomerService>();
+
 
 
 
