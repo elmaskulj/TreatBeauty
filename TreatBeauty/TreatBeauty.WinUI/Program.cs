@@ -8,7 +8,7 @@ using TreatBeauty.WinUI.EmployeeForms;
 using TreatBeauty.WinUI.ServiceForms;
 using TreatBeauty.WinUI.TermForms;
 using TreatBeauty.WinUI.NewsForms;
-
+using TreatBeauty.WinUI.Reports;
 
 namespace TreatBeauty.WinUI
 {
@@ -22,7 +22,7 @@ namespace TreatBeauty.WinUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new frmServiceReport());
         }
     }
 }

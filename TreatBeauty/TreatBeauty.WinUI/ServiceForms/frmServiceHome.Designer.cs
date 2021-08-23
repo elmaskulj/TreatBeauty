@@ -153,7 +153,7 @@ namespace TreatBeauty.WinUI.ServiceForms
             // 
             this.lblSalon.AutoSize = true;
             this.lblSalon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSalon.Location = new System.Drawing.Point(42, 88);
+            this.lblSalon.Location = new System.Drawing.Point(41, 88);
             this.lblSalon.Name = "lblSalon";
             this.lblSalon.Size = new System.Drawing.Size(51, 20);
             this.lblSalon.TabIndex = 31;
