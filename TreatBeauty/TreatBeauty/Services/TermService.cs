@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using TreatBeauty.Database;
 using TreatBeauty.Model.Requests;
 using TreatBeauty.Interfaces;
+using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 
 namespace TreatBeauty.Services
 {
@@ -13,6 +15,29 @@ namespace TreatBeauty.Services
     {
         public TermService(MyContext context, IMapper mapper) : base(context, mapper) { }
 
-       
+        public override IEnumerable<Model.Term> Get(Model.TermSearchObject search)
+        {
+            var entity = _context.Set<Database.Term>().AsQueryable();
+
+            if (search?.IncludeList?.Length > 0)
+            {
+                foreach (var item in search.IncludeList)
+                    entity = entity.Include(item);
+            }
+
+            if (search?.SalonId != null && !search.IsReport)
+            {
+                entity = entity.Include(x => x.Employee).Where(x => x.Employee.SalonId == search.SalonId);
+            }
+
+            if (search?.Date != null)
+                entity = entity.Where(x => x.Date.Value.Date== search.Date.Date);
+
+                var list = entity.ToList();
+
+            return _mapper.Map<List<Model.Term>>(list);
+        }
+
+
     }
 }

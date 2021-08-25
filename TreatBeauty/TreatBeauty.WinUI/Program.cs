@@ -8,7 +8,7 @@ using TreatBeauty.WinUI.EmployeeForms;
 using TreatBeauty.WinUI.ServiceForms;
 using TreatBeauty.WinUI.TermForms;
 using TreatBeauty.WinUI.NewsForms;
-using TreatBeauty.WinUI.Reports;
+using TreatBeauty.WinUI.Report;
 
 namespace TreatBeauty.WinUI
 {

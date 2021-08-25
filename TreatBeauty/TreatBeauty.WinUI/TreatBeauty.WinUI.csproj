@@ -139,11 +139,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reports\frmServiceReport.cs">
+    <Compile Include="Report\frmServiceReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reports\frmServiceReport.Designer.cs">
+    <Compile Include="Report\frmServiceReport.Designer.cs">
       <DependentUpon>frmServiceReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\serviceDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>serviceDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="Resource.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -186,11 +191,30 @@
     <Compile Include="ServiceForms\ServiceListItem.Designer.cs">
       <DependentUpon>ServiceListItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="TermForms\frmAddTerm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TermForms\frmAddTerm.Designer.cs">
       <DependentUpon>frmAddTerm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TermForms\frmTermHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TermForms\frmTermHome.Designer.cs">
+      <DependentUpon>frmTermHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TermForms\TimeItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TermForms\TimeItem.Designer.cs">
+      <DependentUpon>TimeItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TermForms\EmployeeTerms.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TermForms\EmployeeTerms.Designer.cs">
+      <DependentUpon>EmployeeTerms.cs</DependentUpon>
     </Compile>
     <Compile Include="Validator.cs" />
     <EmbeddedResource Include="CouponForms\frmAddCoupon.resx">
@@ -232,9 +256,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Reports\frmServiceReport.resx">
+    <EmbeddedResource Include="Report\frmServiceReport.resx">
       <DependentUpon>frmServiceReport.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\serviceReport.rdlc" />
     <EmbeddedResource Include="Resource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>
@@ -257,9 +282,17 @@
     <EmbeddedResource Include="ServiceForms\ServiceListItem.resx">
       <DependentUpon>ServiceListItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ServiceReport.rdlc" />
     <EmbeddedResource Include="TermForms\frmAddTerm.resx">
       <DependentUpon>frmAddTerm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TermForms\frmTermHome.resx">
+      <DependentUpon>frmTermHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TermForms\TimeItem.resx">
+      <DependentUpon>TimeItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TermForms\EmployeeTerms.resx">
+      <DependentUpon>EmployeeTerms.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\TreatBeauty.Model.Customer.datasource" />
@@ -273,6 +306,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Report\serviceDataSet.xsc">
+      <DependentUpon>serviceDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Report\serviceDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>serviceDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Report\serviceDataSet.xss">
+      <DependentUpon>serviceDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -282,6 +326,9 @@
       <Project>{d0bed807-6e0e-47fb-b9fe-80d7b8ce7cf2}</Project>
       <Name>TreatBeauty.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerTypes\readme.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
