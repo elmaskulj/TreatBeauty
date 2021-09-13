@@ -10,5 +10,7 @@ namespace TreatBeauty.Interfaces
     {
         T Insert(TInsert Insert);
         T Update(int Id,TUpdate Update);
+        bool Delete(int Id);
+
     }
 }

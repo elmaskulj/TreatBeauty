@@ -88,10 +88,10 @@ namespace TreatBeauty.WinUI.SalonForms
             this.btnAddSalon.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAddSalon.Image = ((System.Drawing.Image)(resources.GetObject("btnAddSalon.Image")));
             this.btnAddSalon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddSalon.Location = new System.Drawing.Point(659, 121);
+            this.btnAddSalon.Location = new System.Drawing.Point(660, 110);
             this.btnAddSalon.Name = "btnAddSalon";
             this.btnAddSalon.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnAddSalon.Size = new System.Drawing.Size(177, 54);
+            this.btnAddSalon.Size = new System.Drawing.Size(177, 47);
             this.btnAddSalon.TabIndex = 4;
             this.btnAddSalon.Text = "Dodajte salon";
             this.btnAddSalon.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

@@ -29,5 +29,20 @@ namespace TreatBeauty.Services
             _context.SaveChanges();
             return _mapper.Map<T>(entity);
         }
+        public virtual bool Delete(int Id)
+        {
+            try
+            {
+                var set = _context.Set<TDB>();
+                var entity = set.Find(Id);
+                _context.Remove(entity);
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
     }
 }

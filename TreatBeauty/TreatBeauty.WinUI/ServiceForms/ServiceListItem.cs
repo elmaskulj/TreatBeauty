@@ -14,6 +14,7 @@ namespace TreatBeauty.WinUI.ServiceForms
 {
     public partial class ServiceListItem : UserControl
     {
+        private readonly ApiService _service = new ApiService("Service");
         public ServiceListItem()
         {
             InitializeComponent();
@@ -56,9 +57,18 @@ namespace TreatBeauty.WinUI.ServiceForms
         }
         #endregion
 
-        private void pbxDelete_Click(object sender, EventArgs e)
+        private async void pbxDelete_Click(object sender, EventArgs e)
         {
-           
+            var result =await  _service.Delete<bool>(_serviceItem.Id);
+            if (result)
+            {
+                MessageBox.Show(Resource.SuccessDelete);
+                frmServiceHome frmServiceHome = new frmServiceHome();
+                FormMaker.CreateForm(frmServiceHome, this.ParentForm);
+
+            }
+            else
+                MessageBox.Show(Resource.ErrorMsg);
         }
 
         private void pbxEdit_Click(object sender, EventArgs e)

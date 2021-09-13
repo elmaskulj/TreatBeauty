@@ -42,6 +42,10 @@ namespace TreatBeauty.WinUI.SalonForms
             dgvSalons.Columns["Description"].Visible = false;
             dgvSalons.RowHeadersVisible = false;
             dgvSalons.Columns["Id"].Visible = false;
+            dgvSalons.Columns["Lat"].Visible = false;
+            dgvSalons.Columns["Lng"].Visible = false;
+
+
 
             DataGridViewButtonColumn editButton = new DataGridViewButtonColumn();
             {

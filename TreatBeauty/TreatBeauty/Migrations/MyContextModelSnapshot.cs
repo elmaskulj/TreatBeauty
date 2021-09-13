@@ -284,6 +284,12 @@ namespace TreatBeauty.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("Lat")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Lng")
+                        .HasColumnType("float");
+
                     b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 

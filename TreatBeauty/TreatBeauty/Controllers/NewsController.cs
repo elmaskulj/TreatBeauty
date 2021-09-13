@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace TreatBeauty.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
+
     public class NewsController : CrudController<Model.News, NewsSearchObject, NewsInsertRequest, NewsInsertRequest>
     {
         public NewsController(INewsService _service) : base(_service)

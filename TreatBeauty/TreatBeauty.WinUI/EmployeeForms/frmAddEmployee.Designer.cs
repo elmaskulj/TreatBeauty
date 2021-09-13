@@ -212,6 +212,7 @@ namespace TreatBeauty.WinUI.EmployeeForms
             this.pbxPhoto.Location = new System.Drawing.Point(535, 64);
             this.pbxPhoto.Name = "pbxPhoto";
             this.pbxPhoto.Size = new System.Drawing.Size(213, 180);
+            this.pbxPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbxPhoto.TabIndex = 30;
             this.pbxPhoto.TabStop = false;
             // 
@@ -223,6 +224,7 @@ namespace TreatBeauty.WinUI.EmployeeForms
             this.cmbSalon.Name = "cmbSalon";
             this.cmbSalon.Size = new System.Drawing.Size(296, 28);
             this.cmbSalon.TabIndex = 29;
+            this.cmbSalon.SelectedIndexChanged += new System.EventHandler(this.cmbSalon_SelectedIndexChanged);
             this.cmbSalon.Validating += new System.ComponentModel.CancelEventHandler(this.cmbSalon_Validating);
             // 
             // label4

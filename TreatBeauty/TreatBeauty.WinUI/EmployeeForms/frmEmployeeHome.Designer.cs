@@ -96,10 +96,10 @@ namespace TreatBeauty.WinUI.EmployeeForms
             this.btnAddEmployee.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAddEmployee.Image = ((System.Drawing.Image)(resources.GetObject("btnAddEmployee.Image")));
             this.btnAddEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddEmployee.Location = new System.Drawing.Point(608, 123);
+            this.btnAddEmployee.Location = new System.Drawing.Point(607, 131);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnAddEmployee.Size = new System.Drawing.Size(218, 54);
+            this.btnAddEmployee.Size = new System.Drawing.Size(219, 46);
             this.btnAddEmployee.TabIndex = 23;
             this.btnAddEmployee.Text = "Dodajte zaposlenika";
             this.btnAddEmployee.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

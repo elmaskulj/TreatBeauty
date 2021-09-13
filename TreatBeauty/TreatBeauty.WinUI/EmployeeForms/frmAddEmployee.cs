@@ -27,18 +27,14 @@ namespace TreatBeauty.WinUI.EmployeeForms
             {
                 _employee = employee;
                 lblHeader.Text = "Uređivanje zaposlenika";
-
-
             }
+            this.cmbSalon.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         public async Task LoadSalons()
         {
             List<Salon> result = new List<Salon>();
             if (UserHelper.IsCurrentUserSuAdmin(ApiService.UserRoles))
-            {
                 result = await _salonService.GetAll<List<Salon>>();
-                result.Insert(0, new Salon());
-            }
             else
             {
                 var salon = await _salonService.GetById<Salon>(ApiService.CurrentUserSalonId);
@@ -177,7 +173,7 @@ namespace TreatBeauty.WinUI.EmployeeForms
 
         private void cmbSalon_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Validator.ObaveznoCombo(sender as ComboBox, errorProvider, Properties.Resources.RequiredMessage);
+            Validator.ObaveznoPoljeComboBox(sender as ComboBox,e, errorProvider, Properties.Resources.RequiredMessage);
         }
 
 
@@ -194,6 +190,11 @@ namespace TreatBeauty.WinUI.EmployeeForms
                 return true;
 
             }
+
+        }
+
+        private void cmbSalon_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

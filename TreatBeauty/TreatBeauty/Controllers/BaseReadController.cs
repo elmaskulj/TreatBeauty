@@ -11,6 +11,7 @@ namespace TreatBeauty.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class BaseReadController<T,TSearch> : ControllerBase where T : class where TSearch : class
     {
         public IReadService<T,TSearch> _service;

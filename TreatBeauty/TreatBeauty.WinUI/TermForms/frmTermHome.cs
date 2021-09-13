@@ -29,16 +29,16 @@ namespace TreatBeauty.WinUI.TermForms
         public async Task LoadSalons()
         {
             List<Salon> result = new List<Salon>();
-            //if (UserHelper.IsCurrentUserSuAdmin(ApiService.UserRoles))
-            //{
-            result = await _salonService.GetAll<List<Salon>>();
-            //result.Insert(0, new Salon());
-            //}
-            //else
-            //{
-            //    var salon = await _salonService.GetById<Salon>(ApiService.CurrentUserSalonId);
-            //    result.Add(salon);
-            ////}
+            if (UserHelper.IsCurrentUserSuAdmin(ApiService.UserRoles))
+            {
+                result = await _salonService.GetAll<List<Salon>>();
+                result.Insert(0, new Salon());
+            }
+            else
+            {
+                var salon = await _salonService.GetById<Salon>(ApiService.CurrentUserSalonId);
+                result.Add(salon);
+            }
             cmbSalon.ValueMember = "Id";
             cmbSalon.DisplayMember = "Name";
             cmbSalon.DataSource = result;
@@ -47,35 +47,76 @@ namespace TreatBeauty.WinUI.TermForms
 
         private async void btnAddEmployee_Click(object sender, EventArgs e)
         {
-            var date = this.dateTimePicker?.Value.Date;
-            if (int.TryParse(cmbSalon.SelectedValue.ToString(), out int SalonId) && date!=null)
+            try
             {
-                TermSearchObject search = new TermSearchObject()
+                var date = this.dateTimePicker?.Value.Date;
+                if (int.TryParse(cmbSalon.SelectedValue.ToString(), out int SalonId) && date != null)
                 {
-                    SalonId = SalonId,
-                    Date = date.Value,
-                    IsReport = false,
-                    IncludeList = new string[]
+                    TermSearchObject search = new TermSearchObject()
                     {
+                        SalonId = SalonId,
+                        Date = date.Value,
+                        IsReport = false,
+                        IncludeList = new string[]
+                        {
                         "Service",
-                        "Employee"
-                    }
-                };
-                var result = await _termService.GetAll<List<Term>>(search);
+                        "Employee",
+                        "Employee.BaseUser"
+                        }
+                    };
+                    var result = await _termService.GetAll<List<Term>>(search);
 
-                pnlHome.Controls.Clear();
-
+                    LoadDataToDataGrid(result);
+                }
+                else
+                    MessageBox.Show(Resource.ErrorMsg);
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show(Resource.ErrorMsg);
+                MessageBox.Show(Resource.ErrorMsg,ex.Message);
             }
+        }
+        public void LoadDataToDataGrid(List<Term>terms)
+        {
+            this.dgwTerms.DataSource = terms;
+            this.dgwTerms.RowHeadersVisible = false;
+            this.dgwTerms.Columns["Date"].Visible = false;
+            this.dgwTerms.Columns["EmployeeId"].Visible = false;
+            this.dgwTerms.Columns["Employee"].Visible = false;
+            this.dgwTerms.Columns["CustomerId"].Visible = false;
+            this.dgwTerms.Columns["ServiceId"].Visible = false;
+            this.dgwTerms.Columns["Service"].Visible = false;
+            this.dgwTerms.Columns["StartTime"].Visible = false;
+            this.dgwTerms.Columns["EndTime"].Visible = false;
+            this.dgwTerms.Columns["Reserved"].Visible = false;
+
+            this.dgwTerms.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            this.dgwTerms.EnableHeadersVisualStyles = false;
+            this.dgwTerms.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(255, 192, 192);
+            this.dgwTerms.ColumnHeadersDefaultCellStyle.ForeColor = Color.FromArgb(169, 49, 102);
+
+            for (int i = 0; i < this.dgwTerms.Rows.Count; i++)
+                this.dgwTerms.Rows[i].DefaultCellStyle.ForeColor = Color.Black;
+
+            //this.dgwTerms.DefaultCellStyle.SelectionBackColor = this.dgwTerms.DefaultCellStyle.BackColor;
 
         }
 
         private async void frmTermHome_Load(object sender, EventArgs e)
         {
             await LoadSalons();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmAddTerm frmAddTerm = new frmAddTerm();
+            FormMaker.CreateForm(frmAddTerm, this);
+        }
+
+        private void pnlHome_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -97,6 +97,24 @@ namespace TreatBeauty.WinUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Polje Lat ili Lng nije ispravnog formata..
+        /// </summary>
+        internal static string ErrorMsgInvalidLatAndLng {
+            get {
+                return ResourceManager.GetString("ErrorMsgInvalidLatAndLng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pogrešan email ili lozinka. .
+        /// </summary>
+        internal static string ErrorMsgUserNameOrPassword {
+            get {
+                return ResourceManager.GetString("ErrorMsgUserNameOrPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Uređivanje novosti.
         /// </summary>
         internal static string NewsEdit {
@@ -124,6 +142,15 @@ namespace TreatBeauty.WinUI {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Obavezno polje.
+        /// </summary>
+        internal static string RequiredField {
+            get {
+                return ResourceManager.GetString("RequiredField", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Polje treba sadržavati brojčanu vrijednost..
         /// </summary>
         internal static string RequiredNumberValue {
@@ -147,6 +174,15 @@ namespace TreatBeauty.WinUI {
         internal static string SuccessAdd {
             get {
                 return ResourceManager.GetString("SuccessAdd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Uspješno brisanje.
+        /// </summary>
+        internal static string SuccessDelete {
+            get {
+                return ResourceManager.GetString("SuccessDelete", resourceCulture);
             }
         }
         

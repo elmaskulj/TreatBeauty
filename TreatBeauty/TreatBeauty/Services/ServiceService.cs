@@ -19,7 +19,7 @@ namespace TreatBeauty.Services
         }
         public override IEnumerable<Model.Service> Get(Model.ServiceSearchObject search)
         {
-            if (search?.SalonId != null)
+            if (search?.SalonId != null )
                 return GetDataForReport(search?.SalonId);
 
             var entity = _context.Set<Database.Service>().AsQueryable();
@@ -51,6 +51,26 @@ namespace TreatBeauty.Services
             List<Model.Service >list = query.OrderByDescending(x => x.Count).Select(x => new Model.Service{ Id = x.Id, Name = x.Name, Duration = x.Duration, Price = x.Price }).ToList();
 
             return list;
+        }
+
+        public override bool Delete(int Id)
+        {
+            try
+            {
+                var salonService = _context.SalonServices.FirstOrDefault(x => x.ServiceId == Id);
+                _context.Remove(salonService);
+
+                var service = _context.Services.Find(Id);
+                _context.Remove(service);
+
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+           
         }
     }
 }

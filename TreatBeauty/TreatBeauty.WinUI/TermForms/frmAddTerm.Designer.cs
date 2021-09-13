@@ -117,6 +117,7 @@ namespace TreatBeauty.WinUI.TermForms
             this.cmbEmployee.Name = "cmbEmployee";
             this.cmbEmployee.Size = new System.Drawing.Size(419, 28);
             this.cmbEmployee.TabIndex = 25;
+            this.cmbEmployee.Validating += new System.ComponentModel.CancelEventHandler(this.cmbEmployee_Validating);
             // 
             // dtpStart
             // 

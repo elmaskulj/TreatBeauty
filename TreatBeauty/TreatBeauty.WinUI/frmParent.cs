@@ -15,14 +15,15 @@ using TreatBeauty.Model;
 using TreatBeauty.WinUI.TermForms;
 using TreatBeauty.WinUI.NewsForms;
 using TreatBeauty.WinUI.CouponForms;
-
-
+using TreatBeauty.WinUI.Report;
 
 namespace TreatBeauty.WinUI
 {
     public partial class frmParent : Form
     {
         ApiService _salonService = new ApiService("Salon");
+        ApiService _customService = new ApiService("TermCustom");
+
 
         public frmParent()
         {
@@ -106,7 +107,7 @@ namespace TreatBeauty.WinUI
 
         }
 
-        private void frmParent_Load(object sender, EventArgs e)
+        private async void frmParent_Load(object sender, EventArgs e)
         {
             if (!UserHelper.IsCurrentUserSuAdmin(ApiService.UserRoles) || UserHelper.IsCurrentUserAdmin(ApiService.UserRoles))
             {
@@ -118,7 +119,6 @@ namespace TreatBeauty.WinUI
         private void btnEmployee_Click(object sender, EventArgs e)
         {
             frmEmployeeHome employeeHome = new frmEmployeeHome();
-
             FormMaker.CreateFormFromParent(employeeHome, this, pnlParent);
 
         }
@@ -136,8 +136,10 @@ namespace TreatBeauty.WinUI
 
         private void button4_Click(object sender, EventArgs e)
         {
-            frmAddTerm frmaddTerm = new frmAddTerm();
-            FormMaker.CreateFormFromParent(frmaddTerm, this, pnlParent);
+            frmTermHome frmTermHome = new frmTermHome();
+            FormMaker.CreateFormFromParent(frmTermHome, this, pnlParent);
+
+            //frmAddTerm frmaddTerm = new frmAddTerm();
 
         }
 
@@ -153,6 +155,23 @@ namespace TreatBeauty.WinUI
             frmCouponHome frmCouponHome = new frmCouponHome();
             FormMaker.CreateFormFromParent(frmCouponHome, this, pnlParent);
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            frmServiceReport frmServiceReport = new frmServiceReport();
+            FormMaker.CreateFormFromParent(frmServiceReport, this, pnlParent);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            frmCustomerReport frmCustomerReport = new frmCustomerReport();
+            FormMaker.CreateFormFromParent(frmCustomerReport, this, pnlParent);
         }
     }
 }

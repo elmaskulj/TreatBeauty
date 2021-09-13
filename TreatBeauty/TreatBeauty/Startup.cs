@@ -78,6 +78,8 @@ namespace TreatBeauty
             services.AddScoped<INewsService,NewsService>();
             services.AddScoped<ICouponService, CouponService>();
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<ITermCustomService, TermCustomService>();
+
 
 
 

@@ -31,6 +31,16 @@ namespace TreatBeauty.WinUI
 
             }
         }
+        //public static void ValidanDecimalFormat(TextBox textBox, CancelEventArgs e, ErrorProvider err, string poruka)
+        //{
+        //    if (textBox.Value.Date < DateTime.Now.Date)
+        //    {
+        //        err.SetError(date, poruka);
+        //        e.Cancel = true;
+        //    }
+        //    else
+        //        err.SetError(date, null);
+        //}
         public static void ValidanDatum(DateTimePicker date, CancelEventArgs e, ErrorProvider err, string poruka)
         {
             if (date.Value.Date< DateTime.Now.Date)

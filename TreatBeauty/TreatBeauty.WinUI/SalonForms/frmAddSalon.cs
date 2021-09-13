@@ -26,6 +26,8 @@ namespace TreatBeauty.WinUI.SalonForms
 
             if (salon != null)
                 _salon = salon;
+
+            this.cmbCity.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         private async void frmAddSalon_Load(object sender, EventArgs e)
         {
@@ -39,6 +41,8 @@ namespace TreatBeauty.WinUI.SalonForms
                 cmbCity.SelectedValue = _salon.CityId;
                 pbxImage.Image = ImageHelper.ConvertFromByteToImage(_salon.Photo);
                 rtbDescription.Text = _salon.Description;
+                txtLat.Text = _salon.Lat.ToString();
+                txtLng.Text = _salon.Lng.ToString();
             }
             else
                 await LoadData();
@@ -52,7 +56,6 @@ namespace TreatBeauty.WinUI.SalonForms
         {
             var result = await _cityService.GetAll<List<Model.City>>();
 
-            result.Insert(0, new Model.City());
             cmbCity.ValueMember = "Id";
             cmbCity.DisplayMember = "Name";
             cmbCity.DataSource = result;
@@ -76,30 +79,45 @@ namespace TreatBeauty.WinUI.SalonForms
             {
                 if (ValidateChildren() && PictureBoxValidator.ValidatePictureBox(pbxImage, errorProvider, btnUploadPhoto))
                 {
-                    SalonInsertRequest request = new SalonInsertRequest
+                    if (int.TryParse(cmbCity.SelectedValue.ToString(), out int cityId))
                     {
-                        Name = txtName.Text,
-                        Photo = ImageHelper.ConvertFromImageToByte(pbxImage.Image),
-                        CityId = cmbCity.SelectedIndex,
-                        Location = txtLocation.Text,
-                        Description = rtbDescription.Text,
-                    };
-                    if (_salon == null)
-                    {
-                        request.CreatedAt = DateTime.Now;
-                        await _salonService.Insert<Model.Salon>(request);
-                        MessageBox.Show(Resource.SuccessAdd);
+                        if (double.TryParse(txtLat.Text, out double Lat) && double.TryParse(txtLng.Text, out double Lng))
+                        {
+                            SalonInsertRequest request = new SalonInsertRequest
+                            {
+                                Name = txtName.Text,
+                                Photo = ImageHelper.ConvertFromImageToByte(pbxImage.Image),
+                                CityId = cityId,
+                                Location = txtLocation.Text,
+                                Description = rtbDescription.Text,
+                                Lat=Lat,
+                                Lng=Lng
+
+                            };
+                            if (_salon == null)
+                            {
+                                request.CreatedAt = DateTime.Now;
+                                await _salonService.Insert<Model.Salon>(request);
+                                MessageBox.Show(Resource.SuccessAdd);
+                            }
+                            else
+                            {
+                                request.CreatedAt = _salon.CreatedAt;
+                                await _salonService.Update<Model.Salon>(_salon.Id, request);
+                                MessageBox.Show(Resource.SuccessEdit);
+                            }
+                            if (UserHelper.IsCurrentUserSuAdmin(ApiService.UserRoles))
+                            {
+                                frmSalonHome frmSalonHome = new frmSalonHome();
+                                FormMaker.CreateForm(frmSalonHome, this);
+                            }
+                        }
+                        else
+                            MessageBox.Show($"{Resource.ErrorMsg}: {Resource.ErrorMsgInvalidLatAndLng}");
                     }
                     else
                     {
-                        request.CreatedAt = _salon.CreatedAt;
-                        await _salonService.Update<Model.Salon>(_salon.Id, request);
-                        MessageBox.Show(Resource.SuccessEdit);
-                    }
-                    if (UserHelper.IsCurrentUserSuAdmin(ApiService.UserRoles))
-                    {
-                        frmSalonHome frmSalonHome = new frmSalonHome();
-                        FormMaker.CreateForm(frmSalonHome, this);
+                        MessageBox.Show(Resource.ErrorMsg);
                     }
                 }
             }
@@ -120,7 +138,23 @@ namespace TreatBeauty.WinUI.SalonForms
 
         private void cmbCity_Validating(object sender, CancelEventArgs e)
         {
-            Validator.ObaveznoCombo(sender as ComboBox, errorProvider, Properties.Resources.RequiredMessage);
+            Validator.ObaveznoPoljeComboBox(sender as ComboBox, e , errorProvider, Properties.Resources.RequiredMessage);
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtLat_Validating(object sender, CancelEventArgs e)
+        {
+            Validator.ObaveznoPoljeTxtBrojcanaVrijednost(sender as TextBox, e, errorProvider, Resource.RequiredNumberValue);
+        }
+
+        private void txtLng_Validating(object sender, CancelEventArgs e)
+        {
+            Validator.ObaveznoPoljeTxtBrojcanaVrijednost(sender as TextBox, e, errorProvider, Resource.RequiredNumberValue);
+
         }
     }
 }

@@ -15,5 +15,6 @@ namespace TreatBeauty.Model
         }
         public BaseUser BaseUser { get; set; }
         public string PhoneNumber { get; set; }
+        
     }
 }

@@ -35,23 +35,26 @@ namespace TreatBeauty.WinUI.TermForms
             this.cmbSalon = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAddEmployee = new System.Windows.Forms.Button();
-            this.pnlHome = new System.Windows.Forms.FlowLayoutPanel();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dgwTerms = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwTerms)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePicker
             // 
             this.dateTimePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker.Location = new System.Drawing.Point(238, 123);
+            this.dateTimePicker.Location = new System.Drawing.Point(322, 120);
             this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(329, 27);
+            this.dateTimePicker.Size = new System.Drawing.Size(353, 27);
             this.dateTimePicker.TabIndex = 0;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(49)))), ((int)(((byte)(102)))));
             this.panel1.Controls.Add(this.lblHeader);
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -78,7 +81,7 @@ namespace TreatBeauty.WinUI.TermForms
             this.cmbSalon.FormattingEnabled = true;
             this.cmbSalon.Location = new System.Drawing.Point(33, 122);
             this.cmbSalon.Name = "cmbSalon";
-            this.cmbSalon.Size = new System.Drawing.Size(178, 28);
+            this.cmbSalon.Size = new System.Drawing.Size(269, 28);
             this.cmbSalon.TabIndex = 24;
             // 
             // label1
@@ -99,7 +102,7 @@ namespace TreatBeauty.WinUI.TermForms
             this.btnAddEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddEmployee.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAddEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddEmployee.Location = new System.Drawing.Point(605, 110);
+            this.btnAddEmployee.Location = new System.Drawing.Point(692, 118);
             this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
@@ -110,12 +113,36 @@ namespace TreatBeauty.WinUI.TermForms
             this.btnAddEmployee.UseVisualStyleBackColor = false;
             this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
             // 
-            // pnlHome
+            // button1
             // 
-            this.pnlHome.Location = new System.Drawing.Point(33, 192);
-            this.pnlHome.Name = "pnlHome";
-            this.pnlHome.Size = new System.Drawing.Size(773, 373);
-            this.pnlHome.TabIndex = 33;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(49)))), ((int)(((byte)(102)))));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(675, 14);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.button1.Size = new System.Drawing.Size(140, 40);
+            this.button1.TabIndex = 34;
+            this.button1.Text = "Dodaj termin";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // dgwTerms
+            // 
+            this.dgwTerms.AllowUserToAddRows = false;
+            this.dgwTerms.AllowUserToDeleteRows = false;
+            this.dgwTerms.BackgroundColor = System.Drawing.Color.White;
+            this.dgwTerms.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwTerms.Location = new System.Drawing.Point(33, 184);
+            this.dgwTerms.Name = "dgwTerms";
+            this.dgwTerms.ReadOnly = true;
+            this.dgwTerms.RowHeadersWidth = 51;
+            this.dgwTerms.RowTemplate.Height = 24;
+            this.dgwTerms.Size = new System.Drawing.Size(773, 374);
+            this.dgwTerms.TabIndex = 0;
             // 
             // frmTermHome
             // 
@@ -123,7 +150,7 @@ namespace TreatBeauty.WinUI.TermForms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(843, 597);
-            this.Controls.Add(this.pnlHome);
+            this.Controls.Add(this.dgwTerms);
             this.Controls.Add(this.btnAddEmployee);
             this.Controls.Add(this.cmbSalon);
             this.Controls.Add(this.label1);
@@ -135,6 +162,7 @@ namespace TreatBeauty.WinUI.TermForms
             this.Load += new System.EventHandler(this.frmTermHome_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwTerms)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -148,6 +176,7 @@ namespace TreatBeauty.WinUI.TermForms
         private System.Windows.Forms.ComboBox cmbSalon;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAddEmployee;
-        private System.Windows.Forms.FlowLayoutPanel pnlHome;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.DataGridView dgwTerms;
     }
 }

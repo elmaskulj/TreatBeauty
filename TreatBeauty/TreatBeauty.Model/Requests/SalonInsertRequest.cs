@@ -12,5 +12,7 @@ namespace TreatBeauty.Model.Requests
         public byte[] Photo { get; set; }
         public string Location { get; set; }
         public int CityId { get; set; }
+        public double Lat { get; set; }
+        public double Lng { get; set; }
     }
 }

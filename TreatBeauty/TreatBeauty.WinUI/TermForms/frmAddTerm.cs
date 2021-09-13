@@ -23,6 +23,9 @@ namespace TreatBeauty.WinUI.TermForms
         public frmAddTerm()
         {
             InitializeComponent();
+            this.cmbSalon.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cmbEmployee.DropDownStyle = ComboBoxStyle.DropDownList;
+
             dtpStart.Format = DateTimePickerFormat.Custom;
             dtpStart.CustomFormat = "HH:mm tt";
             dtpStart.ShowUpDown = true;
@@ -175,6 +178,11 @@ namespace TreatBeauty.WinUI.TermForms
             }
             else
                 errorProvider.SetError(sender as DateTimePicker, null);
+        }
+
+        private void cmbEmployee_Validating(object sender, CancelEventArgs e)
+        {
+            Validator.ObaveznoPoljeComboBox(sender as ComboBox,e,errorProvider, "Obavezno polje");
         }
     }
 }

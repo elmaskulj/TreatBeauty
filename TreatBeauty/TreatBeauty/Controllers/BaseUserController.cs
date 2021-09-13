@@ -11,7 +11,7 @@ namespace TreatBeauty.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    //[Authorize]
+    [Authorize]
     public class BaseUserController : ControllerBase
     {
         private IBaseUserService _service;

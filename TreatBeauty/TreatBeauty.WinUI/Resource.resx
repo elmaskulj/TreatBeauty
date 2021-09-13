@@ -129,6 +129,12 @@
   <data name="ErrorMsg" xml:space="preserve">
     <value>Došlo je do greške.</value>
   </data>
+  <data name="ErrorMsgInvalidLatAndLng" xml:space="preserve">
+    <value>Polje Lat ili Lng nije ispravnog formata.</value>
+  </data>
+  <data name="ErrorMsgUserNameOrPassword" xml:space="preserve">
+    <value>Pogrešan email ili lozinka. </value>
+  </data>
   <data name="NewsEdit" xml:space="preserve">
     <value>Uređivanje novosti</value>
   </data>
@@ -138,6 +144,9 @@
   <data name="PastDateErrorMessageCoupon" xml:space="preserve">
     <value>Nije moguće kreirati kupon na datum koji je prošao.</value>
   </data>
+  <data name="RequiredField" xml:space="preserve">
+    <value>Obavezno polje</value>
+  </data>
   <data name="RequiredNumberValue" xml:space="preserve">
     <value>Polje treba sadržavati brojčanu vrijednost.</value>
   </data>
@@ -146,6 +155,9 @@
   </data>
   <data name="SuccessAdd" xml:space="preserve">
     <value>Uspješno dodavanje.</value>
+  </data>
+  <data name="SuccessDelete" xml:space="preserve">
+    <value>Uspješno brisanje</value>
   </data>
   <data name="SuccessEdit" xml:space="preserve">
     <value>Uspješna izmjena.</value>

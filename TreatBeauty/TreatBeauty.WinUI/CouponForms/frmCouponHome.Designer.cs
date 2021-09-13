@@ -73,10 +73,10 @@ namespace TreatBeauty.WinUI.CouponForms
             this.btnAddEmployee.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAddEmployee.Image = ((System.Drawing.Image)(resources.GetObject("btnAddEmployee.Image")));
             this.btnAddEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddEmployee.Location = new System.Drawing.Point(563, 121);
+            this.btnAddEmployee.Location = new System.Drawing.Point(581, 130);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.btnAddEmployee.Size = new System.Drawing.Size(189, 54);
+            this.btnAddEmployee.Size = new System.Drawing.Size(171, 43);
             this.btnAddEmployee.TabIndex = 26;
             this.btnAddEmployee.Text = "Dodajte kupon";
             this.btnAddEmployee.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

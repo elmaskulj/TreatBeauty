@@ -31,7 +31,6 @@ namespace TreatBeauty.WinUI.NewsForms
             if (UserHelper.IsCurrentUserSuAdmin(ApiService.UserRoles))
             {
                 result = await _salonService.GetAll<List<Salon>>();
-                result.Insert(0, new Salon());
             }
             else
             {

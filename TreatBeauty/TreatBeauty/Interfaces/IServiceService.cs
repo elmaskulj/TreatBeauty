@@ -6,8 +6,8 @@ using TreatBeauty.Model.Requests;
 
 namespace TreatBeauty.Interfaces
 {
-    public interface IServiceService:ICrudService<Model.Service, Model.ServiceSearchObject, ServiceInsertRequest, ServiceInsertRequest>
+    public interface IServiceService : ICrudService<Model.Service, Model.ServiceSearchObject, ServiceInsertRequest, ServiceInsertRequest>
     {
-
     }
+
 }

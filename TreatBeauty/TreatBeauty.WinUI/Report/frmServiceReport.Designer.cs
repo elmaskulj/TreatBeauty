@@ -30,7 +30,8 @@ namespace TreatBeauty.WinUI.Report
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            this.tblBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.serviceDataSet = new TreatBeauty.WinUI.Report.serviceDataSet();
             this.lblSalon = new System.Windows.Forms.Label();
             this.cmbSalon = new System.Windows.Forms.ComboBox();
             this.btnAddEmployee = new System.Windows.Forms.Button();
@@ -39,13 +40,24 @@ namespace TreatBeauty.WinUI.Report
             this.tblBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.serviceDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serviceDataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // tblBindingSource
+            // 
+            this.tblBindingSource.DataMember = "tbl";
+            this.tblBindingSource.DataSource = this.serviceDataSet;
+            // 
+            // serviceDataSet
+            // 
+            this.serviceDataSet.DataSetName = "serviceDataSet";
+            this.serviceDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // lblSalon
             // 
             this.lblSalon.AutoSize = true;
             this.lblSalon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSalon.Location = new System.Drawing.Point(31, 25);
+            this.lblSalon.Location = new System.Drawing.Point(69, 27);
             this.lblSalon.Name = "lblSalon";
             this.lblSalon.Size = new System.Drawing.Size(51, 20);
             this.lblSalon.TabIndex = 33;
@@ -55,7 +67,7 @@ namespace TreatBeauty.WinUI.Report
             // 
             this.cmbSalon.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSalon.FormattingEnabled = true;
-            this.cmbSalon.Location = new System.Drawing.Point(35, 52);
+            this.cmbSalon.Location = new System.Drawing.Point(73, 54);
             this.cmbSalon.Name = "cmbSalon";
             this.cmbSalon.Size = new System.Drawing.Size(273, 28);
             this.cmbSalon.TabIndex = 32;
@@ -66,7 +78,7 @@ namespace TreatBeauty.WinUI.Report
             this.btnAddEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAddEmployee.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnAddEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddEmployee.Location = new System.Drawing.Point(333, 40);
+            this.btnAddEmployee.Location = new System.Drawing.Point(371, 42);
             this.btnAddEmployee.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddEmployee.Name = "btnAddEmployee";
             this.btnAddEmployee.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
@@ -77,11 +89,9 @@ namespace TreatBeauty.WinUI.Report
             this.btnAddEmployee.UseVisualStyleBackColor = false;
             this.btnAddEmployee.Click += new System.EventHandler(this.btnAddEmployee_Click);
             // 
-            // reportViewer1
-            // 
-            reportDataSource1.Name = "dataSet";
-            reportDataSource1.Value = this.tblBindingSource;
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
+            //reportDataSource1.Name = "dataSet";
+            //reportDataSource1.Value = this.tblBindingSource;
+            //this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "TreatBeauty.WinUI.Report.serviceReport.rdlc";
             this.reportViewer1.Location = new System.Drawing.Point(35, 115);
             this.reportViewer1.Name = "reportViewer1";
@@ -99,6 +109,7 @@ namespace TreatBeauty.WinUI.Report
             this.tblBindingSource.DataMember = "tbl";
             this.tblBindingSource.DataSource = this.serviceDataSet;
             // 
+            // 
             // frmServiceReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -106,6 +117,7 @@ namespace TreatBeauty.WinUI.Report
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(825, 550);
             this.Controls.Add(this.reportViewer1);
+
             this.Controls.Add(this.btnAddEmployee);
             this.Controls.Add(this.lblSalon);
             this.Controls.Add(this.cmbSalon);
@@ -113,8 +125,8 @@ namespace TreatBeauty.WinUI.Report
             this.Name = "frmServiceReport";
             this.Text = "frmServiceReport";
             this.Load += new System.EventHandler(this.frmServiceReport_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.serviceDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tblBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.serviceDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

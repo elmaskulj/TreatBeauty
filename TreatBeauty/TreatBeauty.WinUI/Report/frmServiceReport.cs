@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TreatBeauty.Model;
+using TreatBeauty.WinUI.helper;
 
 namespace TreatBeauty.WinUI.Report
 {
@@ -56,13 +57,13 @@ namespace TreatBeauty.WinUI.Report
         {
             List<Salon> result = new List<Salon>();
 
-            //if (UserHelper.IsCurrentUserAdmin(ApiService.UserRoles))
-            //{
-            //    var salon = await _salonService.GetById<Salon>(ApiService.CurrentUserSalonId);
-            //    result.Add(salon);
-            //}
-            //else
-            result = await _salonService.GetAll<List<Salon>>();
+            if (UserHelper.IsCurrentUserAdmin(ApiService.UserRoles))
+            {
+                var salon = await _salonService.GetById<Salon>(ApiService.CurrentUserSalonId);
+                result.Add(salon);
+            }
+            else
+                result = await _salonService.GetAll<List<Salon>>();
 
             cmbSalon.ValueMember = "Id";
             cmbSalon.DisplayMember = "Name";

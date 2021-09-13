@@ -33,6 +33,10 @@ namespace TreatBeauty.WinUI.ServiceForms
 
             lblCurrency.Text = Resource.CurrencyKM;
             lblDuration.Text = Resource.DurationMin;
+
+            this.cmbSalon.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cmbCategory.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
         private async Task LoadSalons()
         {

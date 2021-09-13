@@ -26,27 +26,46 @@ namespace TreatBeauty.WinUI
 
             try
             {
-                var result = await _baseUserService.GetAll<IEnumerable<Model.BaseUser>>();
-                Model.BaseUser user = result.FirstOrDefault(x => x.Email == ApiService.UserName);
-
-                if (result != null)
+                if (ValidateChildren())
                 {
-                    ApiService.UserRoles = user?.BaseUserRoles.ToList();
-                    var employee = await _employeeService.GetById<Model.Employee>(user.Id);
-                    if (employee != null)
-                        ApiService.CurrentUserSalonId = employee.SalonId;
+                    var result = await _baseUserService.GetAll<IEnumerable<Model.BaseUser>>();
+                    Model.BaseUser user = result?.FirstOrDefault(x => x.Email == ApiService.UserName);
 
-                    frmParent frmParent = new frmParent();
-                    this.Hide();
-                    frmParent.Show();
+                    if (user != null)
+                    {
+                        ApiService.UserRoles = user?.BaseUserRoles.ToList();
+                        var employee = await _employeeService.GetById<Model.Employee>(user.Id);
+                        if (employee != null)
+                            ApiService.CurrentUserSalonId = employee.SalonId;
+
+                        frmParent frmParent = new frmParent();
+                        this.Hide();
+                        frmParent.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show(Resource.ErrorMsgUserNameOrPassword);
+
+                    }
                 }
-
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Nije proslo");
+                MessageBox.Show(Resource.ErrorMsg);
             }
 
+
+        }
+
+        private void txtUserName_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Validator.ObaveznoPoljeTxt(txtUserName, e, errorProvider, Resource.RequiredField);
+        }
+
+       
+        private void txtPassword_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Validator.ObaveznoPoljeTxt(txtPassword, e, errorProvider, Resource.RequiredField);
 
         }
     }

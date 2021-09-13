@@ -24,6 +24,10 @@ namespace TreatBeauty.Controllers
         {
             return _crudService.Update(Id, Update);
         }
-
+        [HttpDelete("{Id}")]
+        public bool Delete(int Id)
+        {
+            return _crudService.Delete(Id);
+        }
     }
 }

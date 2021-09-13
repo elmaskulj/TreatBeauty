@@ -31,9 +31,9 @@ namespace TreatBeauty.Services
             }
 
             if (search?.Date != null)
-                entity = entity.Where(x => x.Date.Value.Date== search.Date.Date);
+                entity = entity.Where(x => x.Date.Value.Date == search.Date.Date);
 
-                var list = entity.ToList();
+                var list = entity.OrderBy(x=>x.StartTime).ToList();
 
             return _mapper.Map<List<Model.Term>>(list);
         }

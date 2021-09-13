@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace TreatBeauty.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class SalonServicesController : CrudController<Model.SalonServices, Model.SalonServicesSearchObject, Model.SalonServices,object>
     {
         public SalonServicesController(ISalonServicesService service) : base(service)

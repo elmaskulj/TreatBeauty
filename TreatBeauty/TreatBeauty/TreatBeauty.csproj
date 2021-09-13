@@ -30,5 +30,15 @@
     <ProjectReference Include="..\TreatBeauty.Model\TreatBeauty.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Script\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Script\beauty.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 
 </Project>
