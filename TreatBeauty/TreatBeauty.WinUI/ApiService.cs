@@ -29,11 +29,18 @@ namespace TreatBeauty.WinUI
             {
                 query = await request?.ToQueryString();
             }
-            var result = await $"{_endpoint}{_resource}?{query}"
-               .WithBasicAuth(UserName, Password).GetJsonAsync<T>();
+            try
+            {
+                var result = await $"{_endpoint}{_resource}?{query}"
+                .WithBasicAuth(UserName, Password).GetJsonAsync<T>();
+                return result;
 
+            }
+            catch (System.Exception ex)
+            {
 
-            return result;
+            }
+            return default(T);
         }
         public async Task<T> GetById<T>(object id)
         {

@@ -8,6 +8,8 @@ class MdlSalon {
   final String location;
   final int cityId;
   final List<int> photo;
+  final double lat;
+  final double lng;
 
   MdlSalon({
     required this.id,
@@ -16,7 +18,9 @@ class MdlSalon {
     required this.description,
     required this.cityId,
     required this.createdAt,
-    required this.location
+    required this.location,
+    required this.lat,
+    required this.lng,
   });
 
   factory MdlSalon.fromJson(Map<String, dynamic> json) {
@@ -29,6 +33,8 @@ class MdlSalon {
       description: json["description"],
       location: json["location"],
       cityId: json["cityId"],
+      lat: json["lat"],
+      lng: json["lng"],
       createdAt: DateTime.parse(json["createdAt"]).toString(),
     );
   }

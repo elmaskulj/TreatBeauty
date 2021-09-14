@@ -3,23 +3,29 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:treatbeauty/models/MdlNews.dart';
 import 'package:treatbeauty/models/MdlSalon.dart';
+import 'package:treatbeauty/pages/MapScreen.dart';
 import 'package:treatbeauty/services/APIService.dart';
 import 'package:jiffy/jiffy.dart';
 
 class Salon extends StatefulWidget {
-  final MdlSalon salon;
-
-  const Salon({Key? key, required this.salon}) : super(key: key);
+  final int salonId;
+  const Salon({Key? key, required this.salonId}) : super(key: key);
 
   @override
   _SalonState createState() => _SalonState();
 }
 
-Future<List<MdlNews>> fetchSalons(salonId) async {
+Future<List<MdlNews>> fetchNews(salonId) async {
   Map<String,String> queryParams = {'SalonId': salonId.toString()};
-  var salons  = await APIService.Get('News',queryParams);
-  return salons!.map((e) => MdlNews.fromJson(e)).toList();
+  var news  = await APIService.Get('News',queryParams);
+  return news!.map((e) => MdlNews.fromJson(e)).toList();
 }
+
+Future<MdlSalon> fetchSalon(salonId) async {
+  var salon  = await APIService.GetById('Salon', salonId);
+  return MdlSalon.fromJson(salon);
+}
+
 
 class _SalonState extends State<Salon> {
   @override
@@ -36,11 +42,26 @@ class _SalonState extends State<Salon> {
           )),
       body: Column(
         children: [
-          Center(
-            child: Image.memory(
-              Uint8List.fromList(widget.salon.photo),
-              height: 230,
-            ),
+          FutureBuilder<MdlSalon>(
+              future: fetchSalon(widget.salonId),
+              builder: (BuildContext context, AsyncSnapshot<MdlSalon>snapshot){
+                if(snapshot.connectionState == ConnectionState.waiting){
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (snapshot.hasError) {
+                  return Center(
+                    child: Text('Error...'),
+                  );
+                } else{
+                  return Center(
+                    child: Image.memory(
+                      Uint8List.fromList(snapshot.data!.photo),
+                      height: 230,
+                    ),
+                  );
+                }
+              }
           ),
           SizedBox(
             height: 20,
@@ -51,7 +72,16 @@ class _SalonState extends State<Salon> {
                     width: 1.0, color: Colors.black, style: BorderStyle.solid)),
             children: [
               TableRow(children: [
-                Icon(Icons.location_on),
+                InkWell(onTap: ()async {
+                  MdlSalon salon = await fetchSalon(widget.salonId);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            Mape(longitude: salon.lat, latitude: salon.lng)
+                    ),
+                  );
+                }, child: Icon(Icons.location_on)),
                 Icon(Icons.favorite),
                 Icon(Icons.home),
               ]),
@@ -69,14 +99,13 @@ class _SalonState extends State<Salon> {
           ),
           Expanded(
             child: FutureBuilder<List<MdlNews>>(
-                future: fetchSalons(widget.salon.id),
+                future: fetchNews(widget.salonId),
                 builder: (BuildContext context,AsyncSnapshot<List<MdlNews>> snapshot){
                   if(snapshot.connectionState == ConnectionState.waiting){
                     return Center(
                       child: CircularProgressIndicator(),
                     );
                   } else if (snapshot.hasError) {
-                    print(snapshot.error);
                     return Center(
                       child: Text('Error...'),
                     );
@@ -101,33 +130,35 @@ Widget novost(MdlNews news, BuildContext context) {
         height: 120,
         width: MediaQuery.of(context).size.width * 0.95,
         decoration:
-            BoxDecoration(border: Border.all(color: Colors.black, width: 1.0)),
+        BoxDecoration(border: Border.all(color: Colors.black, width: 1.0)),
         child: Row(
-          children:[ Align(
-            alignment: Alignment.centerLeft,
-            child: Image.memory(
-              Uint8List.fromList(news.photo),
-              width: 150,
-              height: 100,
+            children:[ Align(
+              alignment: Alignment.centerLeft,
+              child: Image.memory(
+                Uint8List.fromList(news.photo),
+                width: 150,
+                height: 100,
+              ),
             ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              SizedBox(
-                height: 30,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Text(
+                      news.title,
+                      style: TextStyle(fontSize: 20, color: Colors.black38),
+                    ),
+                    Text(
+                      date,
+                      style: TextStyle(fontSize: 13,),
+                    )
+                  ],
+                ),
               ),
-              Text(
-                news.title,
-                style: TextStyle(fontSize: 24, color: Colors.black38),
-              ),
-              Text(
-                date,
-                style: TextStyle(fontSize: 13,),
-              )
-            ],
-          ),
-        ]
+            ]
         )),
     SizedBox(height: 20,)
   ]);

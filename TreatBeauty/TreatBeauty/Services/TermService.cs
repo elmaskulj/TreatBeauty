@@ -19,16 +19,17 @@ namespace TreatBeauty.Services
         {
             var entity = _context.Set<Database.Term>().AsQueryable();
 
+            
             if (search?.IncludeList?.Length > 0)
             {
                 foreach (var item in search.IncludeList)
                     entity = entity.Include(item);
             }
+            if (search!=null && search?.ServiceId != 0)
+                entity = entity.Where(x => x.ServiceId == search.ServiceId.Value);
 
-            if (search?.SalonId != null && !search.IsReport)
-            {
+            if (search?.SalonId != null && !search.IsReport && search.SalonId!=0)
                 entity = entity.Include(x => x.Employee).Where(x => x.Employee.SalonId == search.SalonId);
-            }
 
             if (search?.Date != null)
                 entity = entity.Where(x => x.Date.Value.Date == search.Date.Date);

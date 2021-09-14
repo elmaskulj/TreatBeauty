@@ -68,5 +68,10 @@ namespace TreatBeauty.WinUI
             Validator.ObaveznoPoljeTxt(txtPassword, e, errorProvider, Resource.RequiredField);
 
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

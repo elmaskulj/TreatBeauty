@@ -7,6 +7,8 @@ namespace TreatBeauty.Model
 {
     public class Term
     {
+        public int Id { get; set; }
+
         [DisplayName("Usluga")]
         public string ServiceName
         {

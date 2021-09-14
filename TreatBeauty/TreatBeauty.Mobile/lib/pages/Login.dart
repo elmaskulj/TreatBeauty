@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:treatbeauty/PasswordInput.dart';
 import 'package:treatbeauty/TextInputField.dart';
+import 'package:treatbeauty/models/MdlBaseUser.dart';
 import 'package:treatbeauty/pallete.dart';
 import 'package:treatbeauty/services/APIService.dart';
 
@@ -160,7 +161,13 @@ void _showDialog(BuildContext context) {
 
 
 Future<void> get()async{
-  if (APIService.username != "" && APIService.password != "")
+  if (APIService.username != "" && APIService.password != ""){
     result = await APIService.Get('BaseUser', null);
+    /*
+    List<MdlBaseUser> x = result.map((e) =>MdlBaseUser.fromJson(e) ).toList();
+    MdlBaseUser user = x.firstWhere((element) => element.email == APIService.username);
+*/
+
+  }
 }
 

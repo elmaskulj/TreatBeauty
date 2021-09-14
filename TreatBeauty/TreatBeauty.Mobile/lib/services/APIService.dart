@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:treatbeauty/models/MdlBaseUser.dart';
 
 class APIService {
   static String username = "";
@@ -19,6 +20,7 @@ class APIService {
     username = UserName;
     password = Password;
   }
+
 
   // ignore: non_constant_identifier_names
   static Future<dynamic> ForgotPassword(String route, String email) async {

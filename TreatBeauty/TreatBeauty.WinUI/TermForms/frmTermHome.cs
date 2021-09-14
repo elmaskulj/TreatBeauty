@@ -50,7 +50,7 @@ namespace TreatBeauty.WinUI.TermForms
             try
             {
                 var date = this.dateTimePicker?.Value.Date;
-                if (int.TryParse(cmbSalon.SelectedValue.ToString(), out int SalonId) && date != null)
+                if (int.TryParse(cmbSalon?.SelectedValue?.ToString(), out int SalonId) && date != null)
                 {
                     TermSearchObject search = new TermSearchObject()
                     {

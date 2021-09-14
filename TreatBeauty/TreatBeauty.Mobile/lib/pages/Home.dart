@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:treatbeauty/models/MdlCategory.dart';
 import 'package:treatbeauty/models/MdlServices.dart';
 import 'package:treatbeauty/pages/Search.dart';
+import 'package:treatbeauty/pages/Terms.dart';
 import 'package:treatbeauty/services/APIService.dart';
 
 
@@ -76,6 +77,11 @@ class _HomeState extends State<Home> {
         onTap: (id){
           if(id==1){
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => Search()));
+          }
+          if(id==2){
+            /*
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Calendar()));
+*/
           }
         },
         type: BottomNavigationBarType.fixed,
