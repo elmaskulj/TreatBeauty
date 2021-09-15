@@ -5,7 +5,6 @@ import 'package:flutter/widgets.dart';
 import 'package:treatbeauty/models/MdlCustom.dart';
 import 'package:treatbeauty/models/MdlSalonServices.dart';
 import 'package:treatbeauty/models/MdlServiceInSalon.dart';
-import 'package:treatbeauty/pages/Rezervacija.dart';
 import 'package:treatbeauty/services/APIService.dart';
 import 'package:treatbeauty/pages/Salons.dart';
 
@@ -31,12 +30,10 @@ Future<List<MdlServiceInSalon>> fetchSalone(MdlCustom custom) async {
 
 class _SearchState extends State<Search> {
   TextEditingController controllerLocation = new TextEditingController();
-  TextEditingController controllerDate = new TextEditingController();
   TextEditingController controllerService = new TextEditingController();
 
   Future<List<MdlCustom>> fetchCustom() async {
     Map<String, dynamic> queryParams = {
-      'Date': controllerDate.text,
       'Location': controllerLocation.text,
       'ServiceName': controllerService.text
     };
@@ -48,6 +45,7 @@ class _SearchState extends State<Search> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+          title: Text('Search'),
           elevation: 0.0,
           backgroundColor: Colors.pink[200],
           leading: IconButton(
@@ -59,7 +57,6 @@ class _SearchState extends State<Search> {
       body: Column(
         children: [
           search(context, controllerLocation, 'Lokacija', Icons.location_on_rounded),
-          search(context, controllerDate, 'Datum/Vrijeme', Icons.date_range_sharp),
           search(context, controllerService, 'Usluga', Icons.favorite_border),
           SizedBox(height: 15,),
           Expanded(
@@ -162,12 +159,15 @@ Widget kartica(MdlCustom custom,BuildContext context){
                               padding: EdgeInsets.only(top: 15,left: 30),
                               child: InkWell(
                                 onTap: (){
-                                  print(e.serviceId);
-
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => Calendar(
+                                            serviceId: e.serviceId,
+                                            serviceName : e.serviceName,
+                                            salonName : custom.salonName,
+                                            salonId : custom.salonId,
+                                            price : e.servicePrice
                                         )
                                     ),
                                   );

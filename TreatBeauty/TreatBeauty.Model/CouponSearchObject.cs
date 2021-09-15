@@ -7,5 +7,7 @@ namespace TreatBeauty.Model
    public  class CouponSearchObject
     {
         public int SalonId { get; set; }
+        public int CustomerId { get; set; }
+
     }
 }

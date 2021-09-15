@@ -20,8 +20,12 @@ namespace TreatBeauty.Services
                 return GetDataForReport(search);
 
             var entity = _context.Set<Database.Customer>().AsQueryable();
+            entity = entity.Include("BaseUser");
 
-            var list = entity.ToList();
+            if (!string.IsNullOrEmpty(search?.Email))
+                entity= entity.Include(x => x.BaseUser).Where(x => x.BaseUser.Email == search.Email);
+
+             var list = entity.ToList();
 
             return _mapper.Map<List<Model.Customer>>(list);
         }

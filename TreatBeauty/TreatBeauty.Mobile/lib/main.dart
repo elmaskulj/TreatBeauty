@@ -21,8 +21,6 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/home' : (context)=>Home(),
         '/search' : (context)=>Search(),
-        '/terms' : (context)=>Calendar(),
-
       },
     );
   }

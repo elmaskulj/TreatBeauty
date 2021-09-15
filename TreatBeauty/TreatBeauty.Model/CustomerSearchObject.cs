@@ -10,5 +10,6 @@ namespace TreatBeauty.Model
         public int SalonId { get; set; }
         public bool ReportData { get; set; }
         public string[] IncludeList { get; set; }
+        public string Email { get; set; }
     }
 }

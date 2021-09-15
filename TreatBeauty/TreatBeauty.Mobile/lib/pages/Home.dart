@@ -72,6 +72,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
+        backgroundColor: Colors.pink[200]
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (id){

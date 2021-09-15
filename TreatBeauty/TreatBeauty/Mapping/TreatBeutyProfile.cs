@@ -32,6 +32,10 @@ namespace TreatBeauty.Mapping
             CreateMap<Model.Requests.NewsInsertRequest, Database.News>();
             CreateMap<Model.Requests.CouponInsertRequest, Database.Coupon>();
             CreateMap<Database.Coupon, Model.Coupon>();
+            CreateMap<Database.CustomerCoupon, Model.CustomerCoupon>();
+            CreateMap<Database.Customer, Model.Customer>();
+
+
 
 
 
