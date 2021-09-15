@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 class MdlTerm {
+  final int id;
   final String? serviceName;
   final String start;
   final String end;
@@ -9,8 +10,13 @@ class MdlTerm {
   final int? serviceId;
   final int? customerId;
   final int? employeeId;
+  final String endTime;
+  final String startTime;
 
   MdlTerm({
+    required this.id,
+    required this.startTime,
+    required this.endTime,
     required this.serviceName,
     required this.start,
     required this.end,
@@ -23,14 +29,16 @@ class MdlTerm {
 
   factory MdlTerm.fromJson(Map<String, dynamic> json) {
     return MdlTerm(
-      serviceName: json["serviceName"],
-      start: json["start"] ,
-      end: json["end"],
-      date: DateTime.parse(json["date"]).toString(),
-      reserved: json["reserved"],
-      serviceId: json["serviceId"],
-      customerId: json["customerId"],
-      employeeId: json["employeeId"]
-    );
+        id: json["id"],
+        serviceName: json["serviceName"],
+        endTime: json["endTime"],
+        startTime : json["startTime"],
+        start: json["start"],
+        end: json["end"],
+        date: DateTime.parse(json["date"]).toString(),
+        reserved: json["reserved"],
+        serviceId: json["serviceId"],
+        customerId: json["customerId"],
+        employeeId: json["employeeId"]);
   }
 }

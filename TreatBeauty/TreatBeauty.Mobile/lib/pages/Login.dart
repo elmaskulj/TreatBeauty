@@ -16,6 +16,7 @@ String? validatePassword(String text) {
 }
 
 var result;
+var resultCustomer;
 GlobalKey<FormState> _formKeyLogin = new GlobalKey<FormState>();
 
 class Login extends StatefulWidget {
@@ -35,7 +36,7 @@ class _LoginState extends State<Login> {
                   image: AssetImage('assets/beauty.png'),
                   fit: BoxFit.cover,
                   colorFilter:
-                      ColorFilter.mode(Colors.black54, BlendMode.darken))),
+                  ColorFilter.mode(Colors.black54, BlendMode.darken))),
         ),
         Form(
           key: _formKeyLogin,
@@ -70,8 +71,9 @@ class _LoginState extends State<Login> {
                       child: TextButton(
                         onPressed: () async {
                           if (_formKeyLogin.currentState!.validate()) {
+                            print('alo');
                             await get();
-                            if (result != null) {
+                            if (result != null && resultCustomer != null) {
                               Navigator.of(context)
                                   .pushReplacementNamed('/home');
                             }
@@ -84,7 +86,7 @@ class _LoginState extends State<Login> {
                         child: Text(
                           'Login',
                           style:
-                              kBodyText.copyWith(fontWeight: FontWeight.bold),
+                          kBodyText.copyWith(fontWeight: FontWeight.bold),
                         ),
                       ),
                     ),
@@ -159,15 +161,21 @@ void _showDialog(BuildContext context) {
   );
 }
 
+Future<int?> fetchKorisnik() async {
+  Map<String,String> queryParams = {'Email': APIService.username};
+  var korisnik = await APIService.Get('Customer', queryParams );
+  if (korisnik != null)
+    return korisnik.map((e) => MdlBaseUser.fromJson(e)).first.id;
+  else
+    return null;
+}
 
 Future<void> get()async{
   if (APIService.username != "" && APIService.password != ""){
     result = await APIService.Get('BaseUser', null);
-    /*
-    List<MdlBaseUser> x = result.map((e) =>MdlBaseUser.fromJson(e) ).toList();
-    MdlBaseUser user = x.firstWhere((element) => element.email == APIService.username);
-*/
-
+    if(result!=null) {
+      //resultCustomer = await fetchKorisnik();
+    }
   }
 }
 

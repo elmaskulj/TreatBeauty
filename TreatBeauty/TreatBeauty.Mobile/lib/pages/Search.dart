@@ -119,22 +119,25 @@ Widget kartica(MdlCustom custom,BuildContext context){
                     fit: BoxFit.fill,
                   )),
             ),
-            Row(
-              children: [
-                Padding(
-                    padding: EdgeInsets.only(top: 10,left: 10),
-                    child: Text(custom.salonName,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),)),
-                Spacer(),
-                Padding(
+            Container(
+              color: Colors.grey[200],
+              child: Row(
+                children: [
+                  Padding(
+                      padding: EdgeInsets.only(top: 10,left: 10),
+                      child: Text(custom.salonName,style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),)),
+                  Spacer(),
+                  Padding(
+                      padding: EdgeInsets.only(top: 10),
+                      child: Text(custom.cityName+', '+custom.location,style: TextStyle(fontSize: 16),)),
+                  Padding(
                     padding: EdgeInsets.only(top: 10),
-                    child: Text(custom.cityName+', '+custom.location,style: TextStyle(fontSize: 16),)),
-                Padding(
-                  padding: EdgeInsets.only(top: 10),
-                  child: Icon(
-                      Icons.location_on
-                  ),
-                )
-              ],
+                    child: Icon(
+                        Icons.location_on
+                    ),
+                  )
+                ],
+              ),
             ),
             FutureBuilder<List<MdlServiceInSalon>>(
               future: fetchSalone(custom),

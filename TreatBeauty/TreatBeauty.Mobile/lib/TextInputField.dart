@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:treatbeauty/pallete.dart';
 import 'package:treatbeauty/services/APIService.dart';
-
-
 class TextInputField extends StatelessWidget {
   const TextInputField({
     required this.icon,
@@ -11,13 +9,11 @@ class TextInputField extends StatelessWidget {
     required this.inputAction,
     required this.message,
   }) : super();
-
   final Icon icon;
   final String hint;
   final TextInputType inputType;
   final TextInputAction inputAction;
   final String message;
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -29,9 +25,9 @@ class TextInputField extends StatelessWidget {
         child: Center(
           child: TextFormField(
             onChanged: (txt){
-              if (hint == 'UserName')
+              if (hint == 'UserName'){
                 APIService.username = txt;
-              else if (hint == 'Email') APIService.email = txt;
+              }
             },
             validator: (value) {
               if (value == null || value.isEmpty) {

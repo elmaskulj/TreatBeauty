@@ -26,10 +26,19 @@ namespace TreatBeauty.Services
             }
             if (search.ServiceId.HasValue)
                 entity = entity.Where(x => x.ServiceId == search.ServiceId.Value);
+
             if (search?.SalonId != null && !search.IsReport && search.SalonId != 0)
                 entity = entity.Include(x => x.Employee).Where(x => x.Employee.SalonId == search.SalonId);
+
             if (search.Date.HasValue)
                 entity = entity.Where(x => x.Date.Value.Date == search.Date);
+
+            if (search?.CustomerId != null)
+                entity = entity.Where(x => x.CustomerId == search.CustomerId);
+
+            if (search.CustomerId == null)
+                entity = entity.Where(x => x.Reserved == false);
+
             var list = entity.OrderBy(x => x.StartTime).ToList();
             return _mapper.Map<List<Model.Term>>(list);
         }

@@ -7,6 +7,7 @@ namespace TreatBeauty.Model
     public class TermSearchObject
     {
         public int SalonId { get; set; }
+        public int? CustomerId { get; set; }
         public int? ServiceId { get; set; }
         public bool IsReport { get; set; }
         public string[] IncludeList { get; set; }

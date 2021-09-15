@@ -19,7 +19,7 @@ namespace TreatBeauty.Controllers
         {
            return _crudService.Insert(Insert);
         }
-        [HttpPut("{id}")]
+        [HttpPut("{Id}")]
         public T Update(int Id,TUpdate Update)
         {
             return _crudService.Update(Id, Update);

@@ -7,6 +7,8 @@ import 'package:treatbeauty/pages/Search.dart';
 import 'package:treatbeauty/pages/Terms.dart';
 import 'package:treatbeauty/services/APIService.dart';
 
+import 'Coupons.dart';
+
 
 class Home extends StatefulWidget {
   @override
@@ -80,9 +82,8 @@ class _HomeState extends State<Home> {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => Search()));
           }
           if(id==2){
-            /*
-            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Calendar()));
-*/
+
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => Coupons()));
           }
         },
         type: BottomNavigationBarType.fixed,
@@ -93,11 +94,11 @@ class _HomeState extends State<Home> {
             icon: Icon(
                 Icons.search
             ),
-            label: 'Search',
+            label: 'Pretraga',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.date_range),
-            label: 'Terms',
+            label: 'Kuponi',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

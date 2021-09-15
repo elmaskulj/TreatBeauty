@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:treatbeauty/models/MdlBaseUser.dart';
 import 'package:treatbeauty/models/MdlTerm.dart';
 import 'package:treatbeauty/pages/Rezervacija.dart';
 import 'package:treatbeauty/services/APIService.dart';
@@ -15,11 +16,27 @@ class Calendar extends StatefulWidget {
 }
 
 Future<List<MdlTerm>> fetchTerms(termDate, servId) async {
-  // 'Date': termDate,
   Map<String, dynamic> queryParams = {'Date': termDate,'ServiceId' : servId.toString()};
   var terms = await APIService.Get('Term', queryParams);
   return terms!.map((e) => MdlTerm.fromJson(e)).toList();
 }
+
+Future<int?> fetchKorisnik() async {
+  Map<String,String> queryParams = {'Email': APIService.username};
+  var korisnik = await APIService.Get('Customer', queryParams );
+  if (korisnik != null)
+    return korisnik.map((e) => MdlBaseUser.fromJson(e)).first.id;
+  else
+    return null;
+}
+
+void resereTerm(MdlTerm obj)async{
+  var loggedId = await fetchKorisnik();
+  Map<String,dynamic> queryParams = {'customerId': loggedId, 'reserved' : true ,'serviceId' : obj.serviceId, 'employeeId' : obj.employeeId,
+    'date' : obj.date.toString().substring(0,10), 'endTime':obj.endTime, 'startTime' : obj.startTime };
+  var terms = await APIService.Put('Term', obj.id, queryParams);
+}
+
 
 class _CalendarState extends State<Calendar> {
   DateTime selectedDate = DateTime.now(); // TO tracking date
@@ -35,6 +52,7 @@ class _CalendarState extends State<Calendar> {
                   padding: EdgeInsets.only(left: 130),
                   child: RaisedButton(
                     onPressed: () async {
+                      resereTerm(obj);
                       Navigator.push(
                         context,
                         MaterialPageRoute(

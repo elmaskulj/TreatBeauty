@@ -1,13 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'package:treatbeauty/models/MdlBaseUser.dart';
 
 class APIService {
   static String username = "";
   static String password = "";
   static String confirmPassword = "";
-  static String email = "";
 
   String route = '';
 
@@ -41,10 +39,13 @@ class APIService {
   // ignore: non_constant_identifier_names
   static Future<dynamic> Post(String route, dynamic obj) async {
     String baseUrl = "http://10.0.2.2:5001/" + route;
+    final String basicAuth =
+        'Basic ' + base64Encode(utf8.encode('$username:$password'));
     final response = await http.post(
       Uri.parse(baseUrl),
       headers: <String, String>{
         'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': basicAuth,
       },
       body: jsonEncode(obj),
     );
@@ -52,14 +53,16 @@ class APIService {
 
   // ignore: non_constant_identifier_names
   static Future<dynamic> Put(String route, int id, dynamic obj) async {
-    String baseUrl = "http://10.0.2.2:5001/" + route + "?id=" + id.toString();
-    final response = await http.put(
-        Uri.parse(baseUrl),
+    String baseUrl = "http://10.0.2.2:5001/" + route + "/" + id.toString();
+    final String basicAuth =
+        'Basic ' + base64Encode(utf8.encode('$username:$password'));
+    final response = await http.put(Uri.parse(baseUrl),
         headers: <String, String>{
-          'Content-Type': 'application/json; charset=UTF-8',
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': basicAuth,
         },
-        body: jsonEncode(obj)
-    );
+        body: jsonEncode(obj));
   }
 
   // ignore: non_constant_identifier_names
@@ -75,8 +78,6 @@ class APIService {
       Uri.parse(baseUrl),
       headers: {HttpHeaders.authorizationHeader: basicAuth},
     );
-    print(baseUrl);
-    print(response.statusCode);
     if (response.statusCode == 200) {
       return json.decode(response.body) as List;
     }
