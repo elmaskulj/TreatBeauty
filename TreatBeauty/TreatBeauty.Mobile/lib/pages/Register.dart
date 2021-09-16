@@ -19,7 +19,7 @@ class Register extends StatelessWidget {
       'email': APIService.username,
       'password' : APIService.password,
       'confirmPassword' : APIService.confirmPassword,
-      'createdAt' : DateTime.parse(DateTime.now().toString().substring(0,10)).toString(),
+      'createdAt' : DateTime.now().toString().substring(0,10),
       'roleId' : 2,
       'isActive' : true
     };
