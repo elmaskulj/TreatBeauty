@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:treatbeauty/pages/Home.dart';
 import 'package:treatbeauty/pages/Login.dart';
+import 'package:treatbeauty/pages/Recommend.dart';
 import 'package:treatbeauty/pages/Search.dart';
 import 'package:treatbeauty/pages/Terms.dart';
 
@@ -21,6 +22,7 @@ class _MyAppState extends State<MyApp> {
       routes: {
         '/home' : (context)=>Home(),
         '/search' : (context)=>Search(),
+        '/recommend':(context)=>Recommend()
       },
     );
   }

@@ -1,10 +1,13 @@
 import 'dart:typed_data';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+import 'package:treatbeauty/models/MdlBaseUser.dart';
 import 'package:treatbeauty/models/MdlCustom.dart';
 import 'package:treatbeauty/models/MdlSalonServices.dart';
 import 'package:treatbeauty/models/MdlServiceInSalon.dart';
+import 'package:treatbeauty/pages/Recommend.dart';
 import 'package:treatbeauty/services/APIService.dart';
 import 'package:treatbeauty/pages/Salons.dart';
 
@@ -27,21 +30,55 @@ Future<List<MdlServiceInSalon>> fetchSalone(MdlCustom custom) async {
   return data;
 }
 
+Future<int?> fetchCustomer() async {
+  Map<String, String> queryParams = {'Email': APIService.username};
+  var user = await APIService.Get('Customer', queryParams);
+  return user!.map((e) => MdlBaseUser.fromJson(e)).first.id;
+}
+
+bool isFilter = false;
 
 class _SearchState extends State<Search> {
   TextEditingController controllerLocation = new TextEditingController();
   TextEditingController controllerService = new TextEditingController();
 
   Future<List<MdlCustom>> fetchCustom() async {
-    Map<String, dynamic> queryParams = {
-      'Location': controllerLocation.text,
-      'ServiceName': controllerService.text
-    };
-    var custom = await APIService.Get('TermCustom', queryParams);
+    var custom = await APIService.Get('TermCustom', null);
     return custom!.map((e) => MdlCustom.fromJson(e)).toList();
   }
 
+  bool clicked = false;
+  Future<List<MdlCustom>> fetch() async {
+    print('fetch');
+    if (controllerService.text != "") {
+      var customer = await fetchCustomer();
+      Map<String, dynamic> queryParams = {
+        'Location': controllerLocation.text,
+        'ServiceName': controllerService.text,
+        'CustomerId': customer.toString(),
+      };
+      var custom = await APIService.Get('TermCustom', queryParams);
+      return custom!.map((e) => MdlCustom.fromJson(e)).toList();
+    }
+    else{
+      Map<String, dynamic> queryParams = {
+        'Location': controllerLocation.text,
+        'ServiceName': controllerService.text,
+      };
+      var custom = await APIService.Get('TermCustom', queryParams);
+      return custom!.map((e) => MdlCustom.fromJson(e)).toList();
+    }
+  }
+
   @override
+  void initState(){
+    setState(() {
+      isFilter = false;
+
+    });
+  }
+
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -52,16 +89,99 @@ class _SearchState extends State<Search> {
             icon: Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.of(context).pop();
+              setState(() {
+                isFilter = false;
+              });
             },
           )),
       body: Column(
         children: [
           search(context, controllerLocation, 'Lokacija', Icons.location_on_rounded),
           search(context, controllerService, 'Usluga', Icons.favorite_border),
-          SizedBox(height: 15,),
-          Expanded(
+          SizedBox(
+            height: 15,),
+          GestureDetector(
+            onTap:()async{
+              setState(() {
+                FocusScope.of(context).requestFocus(new FocusNode());
+                isFilter = true;
+              });
+            },
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.85,
+              height: 50,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.grey
+              ),
+              child: Center(
+                child: Text(
+                  "Pretrazi",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 15,),
+          GestureDetector(
+            onTap: (){
+              FocusScope.of(context).requestFocus(new FocusNode());
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => Recommend()
+                ),
+              );
+            },
+            child: Container(
+              width: MediaQuery.of(context).size.width * 0.85,
+              height: 50,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.pink[200]
+              ),
+              child: Center(
+                child: Text(
+                  "Preporučeni proizvodi",
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 15,),
+          isFilter == false ? Expanded(
             child: FutureBuilder<List<MdlCustom>>(
                 future: fetchCustom(),
+                builder: (BuildContext context,AsyncSnapshot<List<MdlCustom>> snapshot){
+                  if(snapshot.connectionState == ConnectionState.waiting){
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (snapshot.hasError) {
+                    print(snapshot.error);
+                    return Center(
+                      child: Text('Error...'),
+                    );
+                  } else {
+                    return ListView(
+                        children: snapshot.data!
+                            .map((e) => kartica(e,context)).toList()
+                    );
+                  }
+                }),
+          ) :Expanded(
+            child: FutureBuilder<List<MdlCustom>>(
+                future: fetch(),
                 builder: (BuildContext context,AsyncSnapshot<List<MdlCustom>> snapshot){
                   if(snapshot.connectionState == ConnectionState.waiting){
                     return Center(
@@ -207,6 +327,7 @@ Widget search(BuildContext context,TextEditingController controller,String hintT
         child: ListTile(
           leading: Icon(icon),
           title: TextField(
+            textInputAction: TextInputAction.go,
             controller: controller,
             decoration: InputDecoration(
                 hintText: hintText, border: InputBorder.none),

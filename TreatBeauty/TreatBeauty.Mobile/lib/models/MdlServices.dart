@@ -10,10 +10,10 @@ class MdlServices {
 
   MdlServices({
     required this.id,
-     this.name,
-     this.price,
-     this.duration,
-     this.photo,
+    this.name,
+    this.price,
+    this.duration,
+    this.photo,
     required this.categoryId
   });
 
@@ -21,12 +21,12 @@ class MdlServices {
     String stringByte = json["photo"] as String;
     List<int> bytes = base64.decode(stringByte);
     return MdlServices(
-        id: json["id"],
-        name: json["name"],
-        price: json["price"],
-        duration: json["duration"],
-        photo: bytes,
-        categoryId : json["categoryId"],
+      id: json["id"],
+      name: json["name"],
+      price: json["price"],
+      duration: json["duration"],
+      photo: bytes,
+      categoryId : json["categoryId"],
     );
   }
 }

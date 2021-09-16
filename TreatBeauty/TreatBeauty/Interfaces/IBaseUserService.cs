@@ -14,6 +14,7 @@ namespace TreatBeauty.Interfaces
         Model.BaseUser Insert(BaseUserInsertRequest request);
         IEnumerable<Model.BaseUser> GetAll();
         Model.BaseUser Update(int Id, BaseUserInsertRequest request);
+        Model.BaseUser Register(BaseUserInsertRequest request);
 
     }
 }

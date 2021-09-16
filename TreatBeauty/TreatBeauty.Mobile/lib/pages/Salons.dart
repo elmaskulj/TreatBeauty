@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:treatbeauty/models/MdlNews.dart';
 import 'package:treatbeauty/models/MdlSalon.dart';
+import 'package:treatbeauty/pages/Home.dart';
 import 'package:treatbeauty/pages/MapScreen.dart';
 import 'package:treatbeauty/services/APIService.dart';
 import 'package:jiffy/jiffy.dart';
@@ -78,12 +79,16 @@ class _SalonState extends State<Salon> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            Mape(longitude: salon.lat, latitude: salon.lng)
-                    ),
+                            Mape(longitude: salon.lat, latitude: salon.lng)),
                   );
-                }, child: Icon(Icons.location_on)),
+                },
+                    child: Icon(Icons.location_on)),
                 Icon(Icons.favorite),
-                Icon(Icons.home),
+                InkWell(
+                    onTap: () {
+                      Navigator.of(context).popAndPushNamed('/home');
+                    },
+                    child: Icon(Icons.home)),
               ]),
             ],
           ),

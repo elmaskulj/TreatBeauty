@@ -131,5 +131,33 @@ namespace TreatBeauty.Services
             var entities = query.ToList();
             return _mapper.Map<IEnumerable<Model.BaseUser>>(entities);
         }
+        public Model.BaseUser Register(BaseUserInsertRequest request)
+        {
+            var entity = _mapper.Map<Database.BaseUser>(request);
+            _context.Add(entity);
+
+            entity.isActive = true;
+            entity.CreatedAt = DateTime.Now;
+            entity.PasswordSalt = GenerateSalt();
+            entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
+
+            _mailService.SendEmailAsync(request.Email, "New Account", "<h1>Hey!, new Login to your account noticed.</h1>" +
+                "<h2>Your password is : " + "</h2>" + "<strong>" + request.Password + "</strong>" +
+                "<p> New login to your account at " + DateTime.Now + "</p>");
+
+            _context.SaveChanges();
+
+            _context.Customers.Add(new Customer { Id = entity.Id });
+
+            Database.BaseUserRole baseUserRole = new Database.BaseUserRole();
+            baseUserRole.BaseUserId = entity.Id;
+            baseUserRole.RoleId = request.RoleId;
+
+            _context.BaseUserRoles.Add(baseUserRole);
+
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.BaseUser>(entity);
+        }
     }
 }

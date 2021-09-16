@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:treatbeauty/models/MdlCategory.dart';
 import 'package:treatbeauty/models/MdlServices.dart';
+import 'package:treatbeauty/pages/MojiTermini.dart';
 import 'package:treatbeauty/pages/Search.dart';
 import 'package:treatbeauty/pages/Terms.dart';
 import 'package:treatbeauty/services/APIService.dart';
@@ -73,8 +74,8 @@ class _HomeState extends State<Home> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
-        backgroundColor: Colors.pink[200]
+          title: Text('Home'),
+          backgroundColor: Colors.pink[200]
       ),
       bottomNavigationBar: BottomNavigationBar(
         onTap: (id){
@@ -82,8 +83,10 @@ class _HomeState extends State<Home> {
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => Search()));
           }
           if(id==2){
-
             Navigator.of(context).push(MaterialPageRoute(builder: (context) => Coupons()));
+          }
+          if(id==3){
+            Navigator.of(context).push(MaterialPageRoute(builder: (context) => MojiTermini()));
           }
         },
         type: BottomNavigationBarType.fixed,
@@ -97,12 +100,12 @@ class _HomeState extends State<Home> {
             label: 'Pretraga',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.date_range),
+            icon: Icon(Icons.card_giftcard),
             label: 'Kuponi',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Profile',
+            icon: Icon(Icons.date_range),
+            label: 'Moji termini',
           ),
         ],
       ),
@@ -149,15 +152,15 @@ Widget categoryServices(int categoryId){
           child: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: snapshot.data!
                     .map((e) => Padding(
-                        padding: EdgeInsets.only(top: 5,left: 30),
-                        child: Text(
-                          e.name.toString(),
-                          style:
-                              TextStyle(decoration: TextDecoration.underline,fontSize: 15,fontWeight: FontWeight.bold),
-                        )))
+                    padding: EdgeInsets.only(top: 5,left: 30),
+                    child: Text(
+                      e.name.toString(),
+                      style:
+                      TextStyle(decoration: TextDecoration.underline,fontSize: 15,fontWeight: FontWeight.bold),
+                    )))
                     .toList()),
           ),
         );

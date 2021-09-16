@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:treatbeauty/PasswordInput.dart';
 import 'package:treatbeauty/TextInputField.dart';
 import 'package:treatbeauty/models/MdlBaseUser.dart';
+import 'package:treatbeauty/pages/Register.dart';
 import 'package:treatbeauty/pallete.dart';
 import 'package:treatbeauty/services/APIService.dart';
 
@@ -34,7 +35,7 @@ class _LoginState extends State<Login> {
           decoration: BoxDecoration(
               image: DecorationImage(
                   image: AssetImage('assets/beauty.png'),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fitWidth,
                   colorFilter:
                   ColorFilter.mode(Colors.black54, BlendMode.darken))),
         ),
@@ -71,7 +72,6 @@ class _LoginState extends State<Login> {
                       child: TextButton(
                         onPressed: () async {
                           if (_formKeyLogin.currentState!.validate()) {
-                            print('alo');
                             await get();
                             if (result != null && resultCustomer != null) {
                               Navigator.of(context)
@@ -90,20 +90,6 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                     ),
-                    GestureDetector(
-                      onTap: () => {
-                        Navigator.pushNamed(context, '/forgotpassword'),
-                        APIService.username = '',
-                        APIService.password = ''
-                      },
-                      child: Text(
-                        'Zaboravljena lozinka?',
-                        style: kBodyText,
-                      ),
-                    ),
-                    SizedBox(
-                      height: 25,
-                    ),
                     SizedBox(
                       height: 25,
                     ),
@@ -111,10 +97,10 @@ class _LoginState extends State<Login> {
                 ),
                 GestureDetector(
                   onTap: () => {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => Register()),
-                    // ),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Register()),
+                    ),
                     APIService.username = '',
                     APIService.password = ''
                   },
@@ -173,9 +159,7 @@ Future<int?> fetchKorisnik() async {
 Future<void> get()async{
   if (APIService.username != "" && APIService.password != ""){
     result = await APIService.Get('BaseUser', null);
-    if(result!=null) {
-      //resultCustomer = await fetchKorisnik();
-    }
+    resultCustomer = await fetchKorisnik();
   }
 }
 

@@ -3,13 +3,13 @@ import 'dart:convert';
 class MdlBaseUser {
   final int id;
 
-MdlBaseUser({
+  MdlBaseUser({
     required this.id,
   });
 
   factory MdlBaseUser.fromJson(Map<String, dynamic> json) {
     return MdlBaseUser(
-      id: json["id"]
+        id: json["id"]
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';
+import 'package:treatbeauty/models/MdlBaseUser.dart';
+import 'package:treatbeauty/models/MdlCoupon.dart';
 import 'package:treatbeauty/models/MdlSalon.dart';
 import 'package:treatbeauty/pages/MapScreen.dart';
 import 'package:treatbeauty/services/APIService.dart';
@@ -19,12 +21,26 @@ class Rezervacija extends StatefulWidget {
 }
 
 TextEditingController controller = new TextEditingController();
+TextEditingController controllerKupon = new TextEditingController();
+double sumController = 0;
+
+
+var pocetnaCijena;
+double kuponCijena = 0;
+var kuponId;
+var resultKupon;
+
 
 Future<MdlSalon> fetchSalon(salonId) async {
   var salon  = await APIService.GetById('Salon', salonId);
   return MdlSalon.fromJson(salon);
 }
 
+Future<int?> fetchCustomer() async {
+  Map<String, String> queryParams = {'Email': APIService.username};
+  var user = await APIService.Get('Customer', queryParams);
+  return user!.map((e) => MdlBaseUser.fromJson(e)).first.id;
+}
 
 class _RezervacijaState extends State<Rezervacija> {
   void payWithCard({required int amount}) async{
@@ -53,27 +69,23 @@ class _RezervacijaState extends State<Rezervacija> {
         ),
         content: Text(response.success == true ? response.message : 'Transakcija uspješna'),
       );
-      // Map<String, dynamic> body = {
-      //   'datum': DateTime.parse(DateTime.now().toString()).toIso8601String(),
-      //   'korisnikId': logovaniKorisnik,
-      //   "iznos" : double.parse(_controller.text),
-      //   "akcijaId" : widget.akcija.id,
-      // };
-      // await APIService.Post('Donacija', body);
     }
+    var customer = await fetchCustomer();
+    Map<String, dynamic> queryParams = {'customerId': int.parse(customer.toString()), 'couponId' : int.parse(kuponId.toString()), 'isUsed': true};
+    var result = await APIService.Post('CustomerCoupon', queryParams);
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 
-  showConfirmAlertDialog(BuildContext context) {
+  showAlertDialog(BuildContext context) {
     Widget cancelButton = TextButton(
-      child: Text("No"),
+      child: Text("Otkaži"),
       onPressed:  () {
         Navigator.of(context).pop();
       },
     );
     Widget continueButton = TextButton(
-      child: Text("Yes"),
-      onPressed:  () async {
+      child: Text("Nastavi"),
+      onPressed:  () {
         double controllerInt = double.parse(controller.text);
         double amountInCents = controllerInt * 1000;
         int integerAmount = (amountInCents/10).ceil();
@@ -82,12 +94,71 @@ class _RezervacijaState extends State<Rezervacija> {
         controller.clear();
       },
     );
+    Widget kuponButton = TextButton(
+      child: Text("Iskoristi kupon"),
+      onPressed:  () {
+        Navigator.of(context).pop();
+        showConfirmAlertDialog(context);
+      },
+    );
 
     AlertDialog alert = AlertDialog(
-      title: Text("Unesite iznos"),
+      title: Text('Izvrsite uplatu'),
       content: TextField(
         keyboardType: TextInputType.number,
         controller: controller,
+        enabled: false,
+      ),
+      actions: [
+        kuponButton,
+        cancelButton,
+        continueButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+
+  showConfirmAlertDialog(BuildContext context) {
+    Widget cancelButton = TextButton(
+      child: Text("Ne"),
+      onPressed:  () {
+        controllerKupon.clear();
+        Navigator.of(context).pop();
+      },
+    );
+    Widget continueButton = TextButton(
+      child: Text("Da"),
+      onPressed:  () async {
+        // Navigator.of(context).pop();
+        if (kuponCijena != 0) {
+          sumController = pocetnaCijena - (pocetnaCijena * (kuponCijena / 100));
+          Navigator.of(context).pop();
+          if (resultKupon != null) {
+            _showDialog(context);
+            resultKupon = null;
+          }
+        }
+      },
+    );
+
+    AlertDialog alert = AlertDialog(
+      title: Text("Unesite kod"),
+      content: TextField(
+        keyboardType: TextInputType.name,
+        controller: controllerKupon,
+        onChanged: (txt)async{
+          resultKupon = await APIService.GetById('Coupon', int.parse(txt));
+          kuponCijena = MdlCoupon.fromJson(resultKupon).value;
+          kuponId = MdlCoupon.fromJson(resultKupon).id;
+        },
       ),
       actions: [
         cancelButton,
@@ -103,6 +174,43 @@ class _RezervacijaState extends State<Rezervacija> {
       },
     );
   }
+
+
+  void _showDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: new Text("Uspjesno iskoristen kupon"),
+          content: Text("Nova cijena : " + sumController.toString()),
+          actions: <Widget>[
+            // ignore: deprecated_member_use
+            new FlatButton(
+              child: new Text("Otkazi"),
+              onPressed: () {
+                controllerKupon.clear();
+                Navigator.of(context).pop();
+              },
+            ),
+            // ignore: deprecated_member_use
+            new FlatButton(
+              child: new Text("Nastavi"),
+              onPressed: () {
+                double controllerInt = double.parse(sumController.toString());
+                double amountInCents = controllerInt * 1000;
+                int integerAmount = (amountInCents/10).ceil();
+                Navigator.of(context).pop();
+                payWithCard(amount: integerAmount);
+                controller.clear();
+                controllerKupon.clear();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
 
   @override
   void initState(){
@@ -205,7 +313,9 @@ class _RezervacijaState extends State<Rezervacija> {
           // ignore: deprecated_member_use
           child: RaisedButton(
             onPressed: (){
-              showConfirmAlertDialog(context);
+              controller.text = widget.price.toString();
+              pocetnaCijena = widget.price;
+              showAlertDialog(context);
             },
             child: Center(
               child: Text(
@@ -241,5 +351,7 @@ class _RezervacijaState extends State<Rezervacija> {
     );
   }
 }
+
+
 
 

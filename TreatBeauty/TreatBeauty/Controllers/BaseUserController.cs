@@ -11,7 +11,6 @@ namespace TreatBeauty.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
     public class BaseUserController : ControllerBase
     {
         private IBaseUserService _service;
@@ -25,19 +24,28 @@ namespace TreatBeauty.Controllers
             return _service.GetById(id);
         }
         [HttpPost]
+        [Authorize]
         public Model.BaseUser Insert(BaseUserInsertRequest users)
         {
             return _service.Insert(users);
         }
         [HttpGet]
+        [Authorize]
         public IEnumerable<Model.BaseUser> Get()
         {
             return _service.GetAll();
         }
         [HttpPut("{id}")]
+        [Authorize]
+
         public Model.BaseUser Update(int Id, BaseUserInsertRequest request)
         {
             return _service.Update(Id, request);
+        }
+        [HttpPost("Register")]
+        public Model.BaseUser Register(BaseUserInsertRequest request)
+        {
+            return _service.Register(request);
         }
     }
 }
