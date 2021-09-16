@@ -46,10 +46,6 @@ namespace TreatBeauty.Services
         {
             if (search != null)
             {
-                //var x = _context.Terms.FromSqlRaw("usp_GetTermsBySearch {0}, {1}, {2}", search.Location, search.Date, search.ServiceName).ToList();
-                //return _mapper.Map<List<TermCustom>>(x);
-
-
                 var query = from t in _context.Terms
                             join s in _context.Services on t.ServiceId equals s.Id
                             join e in _context.Employees on t.EmployeeId equals e.Id
@@ -94,26 +90,21 @@ namespace TreatBeauty.Services
                             f.Location = x.Location;
                             f.CityName = x.CityName;
                             f.services.Add(new ServiceCustom { ServiceId = x.ServiceId, ServiceName = x.ServiceName, ServicePrice = x.ServicePrice.Value /*TermDate = x.TermDate.Value*/ });
+
+                            //Insert all services that has Terms for recommendation
+                            if (search?.CustomerId != null)
+                            {
+                                _context.CustomerServiceRecommend.Add(new Database.CustomerServiceRecommend { CustomerId = search.CustomerId.Value, ServiceId = x.ServiceId });
+                            }
                         }
                     }
                 }
+                //For Recommendation
+                if (search?.CustomerId != null)
+                    _context.SaveChanges();
 
                 return list;
 
-                //List<Model.Procedura> list = query.Select(x => new Model.Procedura
-                //{
-                //    Location = x.Location,
-                //    TerminId = x.Id,
-                //    SalonId = x.SalonId,
-                //    SalonName = x.SalonName,
-                //    SalonPhoto = x.SalonPhoto,
-                //    CityName = x.CityName,
-                //    ServiceName = x.ServiceName,
-                //    ServicePrice = x.ServicePrice,
-                //    ServiceId = x.ServiceId,
-                //    TermDate = x.TermDate.Value
-                //}).ToList();
-                //return list;
             }
             return null;
         }

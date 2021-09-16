@@ -34,7 +34,7 @@ namespace TreatBeauty.Services
                 entity = entity.Where(x => x.Date.Value.Date == search.Date);
 
             if (search?.CustomerId != null)
-                entity = entity.Where(x => x.CustomerId == search.CustomerId);
+                entity = entity.Where(x => x.CustomerId == search.CustomerId && x.Reserved == true);
 
             if (search.CustomerId == null)
                 entity = entity.Where(x => x.Reserved == false);

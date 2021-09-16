@@ -80,8 +80,11 @@ namespace TreatBeauty
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<ITermCustomService, TermCustomService>();
             services.AddScoped<ICustomerCouponsService, CustomerCouponsService>();
+            services.AddScoped<ICustomerServiceRecommendService, CustomerServiceRecommendService>();
+
 
             services.AddTransient<IMailService, SendGridMailService>();
+
 
 
 

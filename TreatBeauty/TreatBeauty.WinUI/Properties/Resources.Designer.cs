@@ -61,7 +61,7 @@ namespace TreatBeauty.WinUI.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to http://localhost:5001/.
+        ///   Looks up a localized string similar to https://localhost:5001/.
         /// </summary>
         internal static string ApiURL {
             get {

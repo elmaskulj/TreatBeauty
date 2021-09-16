@@ -175,6 +175,28 @@ namespace TreatBeauty.Migrations
                     b.ToTable("CustomerCoupons");
                 });
 
+            modelBuilder.Entity("TreatBeauty.Database.CustomerServiceRecommend", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ServiceId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("CustomerServiceRecommend");
+                });
+
             modelBuilder.Entity("TreatBeauty.Database.Employee", b =>
                 {
                     b.Property<int>("Id")
@@ -463,6 +485,25 @@ namespace TreatBeauty.Migrations
                     b.Navigation("Coupon");
 
                     b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("TreatBeauty.Database.CustomerServiceRecommend", b =>
+                {
+                    b.HasOne("TreatBeauty.Database.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TreatBeauty.Database.Service", "Service")
+                        .WithMany()
+                        .HasForeignKey("ServiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("Service");
                 });
 
             modelBuilder.Entity("TreatBeauty.Database.Employee", b =>
